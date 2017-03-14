@@ -3,7 +3,8 @@ var React = require('react');
 var Backbone = require('backbone');
 
 class UserAccount extends React.Component {
-    render(return (
+    render(
+      return (
         <div className="container">
             <div className="row">
                 <a href="#useraccount/">

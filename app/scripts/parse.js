@@ -12,7 +12,7 @@ var parse = {
         xhr.setRequestHeader("X-Parse-REST-API-Key", "gunner");
 
         if (config.sessionId) {
-          xhr.setRequestHeader("X-Parse-Session-Token", sessionId);
+          xhr.setRequestHeader("X-Parse-Session-Token", config.sessionId);
         }
       }
     });
