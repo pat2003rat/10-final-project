@@ -1,10 +1,10 @@
 
 var $ = require('jquery');
 
-var apiUrl = 'http://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json'
+var apiUrl2 = 'http://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json'
 
 $.get({
-  url: apiUrl,
+  url: apiUrl2,
   dataType: 'jsonp'
 }).done(function(data){
   console.log(data.current_observation.icon_url);
@@ -13,8 +13,8 @@ $.get({
 function setupAjax(loggedInUser){
   $.ajaxSetup({
       beforeSend: function(xhr){
-        xhr.setRequestHeader("X-Parse-Application-Id", "tiygvl");
-        xhr.setRequestHeader("X-Parse-REST-API-Key", "slumber");
+        xhr.setRequestHeader("X-Parse-Application-Id", "patrick");
+        xhr.setRequestHeader("X-Parse-REST-API-Key", "gunner");
         if(loggedInUser){
           xhr.setRequestHeader("X-Parse-Session-Token", loggedInUser.sessionToken);
         }
@@ -26,13 +26,11 @@ setupAjax();
 
 var apiUrl = 'https://tiny-parse-server.herokuapp.com';
 
-// $.get(apiUrl + '/Puppy').then(function(data){
-//   console.log(data);
-// });
-//
-// $.post(apiUrl + '/Puppy', {'name': 'Kepler'}).then(function(data){
-//   console.log(data);
-// });
+// ^^ my instance of the heroku app ... users: models.collections
+// hooked up to mongo db //
+// tiny-parse-server and plug into
+// fork and clone tiny parse server, commit it and deploy with heroku
+// after deployement, take url it is deployed to and paste in urlApi variable
 
 $('#signup').on('submit', function(e){
   e.preventDefault();
@@ -72,6 +70,7 @@ $('#login').on('submit', function(e){
 });
 
 var loggedInUser = localStorage.getItem('user');
+
 
 if(loggedInUser){
   loggedInUser = JSON.parse(loggedInUser);
