@@ -3,11 +3,11 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 
-$.ajaxSetup({
-  beforeSend: function(xhr){
-    xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
-    }
-  });
+// $.ajaxSetup({
+//   beforeSend: function(xhr){
+//     xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
+//     }
+//   });
 
 require('./router');
 

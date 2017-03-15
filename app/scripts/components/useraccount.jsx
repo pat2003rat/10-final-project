@@ -3,21 +3,13 @@ var React = require('react');
 var Backbone = require('backbone');
 
 class UserAccount extends React.Component {
-    render(
+    render(){
       return (
         <div className="container">
-            <div className="row">
-                <a href="#useraccount/">
-                    <button className="btn btn-primary">
-                        Login
-                    </button>
-                </a>
-                <div>
-                    Splash Screen
-                </div>
-            </div>
+          Not the Splash Screen
         </div>
-    )}
+    )
+    }
 };
 
 module.exports = {

@@ -2,6 +2,8 @@ var $ = require('jquery');
 var React = require('react');
 var Backbone = require('backbone');
 
+var User = require('../models/user');
+
 class Login extends React.Component {
     render() {
         return (
@@ -47,17 +49,17 @@ class Login extends React.Component {
 class SignUp extends React.Component {
   constructor(props){
     super(props)
-    this.handleEmail= this.handleEmail.bind(this)
+    this.handleUsername= this.handleUsername.bind(this)
     this.handlePassword= this.handlePassword.bind(this)
     this.handleSubmit= this.handleSubmit.bind(this)
     this.state = {
-      email: '',
+      username: '',
       password: ''
     };
   }
 
-  handleEmail(e){
-  this.setState({email: e.target.value});      //this is the value the user just typed in
+  handleUsername(e){
+  this.setState({username: e.target.value});      //this is the value the user just typed in
 }
 
   handlePassword(e){
@@ -66,6 +68,11 @@ class SignUp extends React.Component {
 
 handleSubmit(e){
   e.preventDefault();
+  var user = new User(this.state);
+  user.save().then(function(data){
+    localStorage.setItem('user', JSON.stringify(data));
+    Backbone.history.navigate('userAccount/', { trigger: true })
+  });
 }
 
   render() {
@@ -76,7 +83,7 @@ handleSubmit(e){
               <form onSubmit={this.handleSubmit} id="signup">
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
-                    <input onChange={this.handleEmail} id="signup-email" className="form-control" type="text" name="email" placeholder="Email Address"/>
+                    <input onChange={this.handleUsername} id="signup-email" className="form-control" type="text" name="email" placeholder="Email Address"/>
                 </div>
 
                 <div className="form-group">
