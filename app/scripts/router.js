@@ -10,7 +10,8 @@ var Splash = require('./components/splash.jsx').Splash;
 // var UserAccount = require('./components/useraccount.jsx').UserAccount;
 // var Videos = require('./components/videos.jsx').Videos;
 
-var setup = require('./setup.js');
+var User = require('./models/user.js')
+var parse = require('./parse.js');
 
 //Controllers
 var AppRouter = Backbone.Router.extend({
@@ -23,10 +24,25 @@ var AppRouter = Backbone.Router.extend({
 
   },
   initialize: function(){
-    setup.setup({
+    parse.setup({
       BASE_API_URL: 'https://patrickratigan.herokuapp.com/'
     });
 },
+
+// execute: function(callback, args, name){
+//   var user = User.current();
+//   if(!user && name != 'login'){
+//     this.navigate('', {trigger: true});
+//     return false;
+//   }
+//   if (user && name == "login"){
+//     this.navigate('login/', {trigger:true});
+//     return false;
+//   }
+//
+//   return Backbone.Router.prototype.execute.apply(this, arguments);
+// },
+
   index: function(){
 
     ReactDOM.render(
@@ -43,7 +59,7 @@ var AppRouter = Backbone.Router.extend({
   },
   userAccount: function(){
     ReactDOM.render(
-      React.createElement(UserAccount),
+      React.createElement(UserAccount), //do i need id: here?//
       document.getElementById("app")
     )
   },
