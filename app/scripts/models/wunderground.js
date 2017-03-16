@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 
 var Wunderground = Backbone.Model.extend({
   urlRoot: function(){
-    return 'http://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
+    return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
 
   },
 sync: function(method,model,options){
