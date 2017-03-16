@@ -15,12 +15,11 @@ $(function(){
   Backbone.history.start()
 });
 
-// var apiUrl = 'http://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json'
-//
-//
-// $.get({
-//   url: apiUrl,
-//   dataType: 'jsonp'
-// }, function(data){
-//   console.log(data.current_observation.icon_url);
-// })
+
+
+// create a backbone model...
+
+
+
+
+// console.log(data.current_observation.icon_url);
