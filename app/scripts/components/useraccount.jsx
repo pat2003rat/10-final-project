@@ -7,13 +7,15 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    weather.fetch().then(()=>{
-      console.log(weather);
-      this.setState({weather})
-    })
+    // weather.fetch().then(()=>{
+    //   console.log(weather);
+    //   this.setState({weather})
+    // })
+
     this.state = {
       weather
   };
+
 }
     render(){
       return (
@@ -23,11 +25,15 @@ class UserAccount extends React.Component {
           </div>
           <div id="pagewrap">
             <header>
+
       		    <h2>Welcome to your Training Sessions</h2>
       	    </header>
       	    <section id="content">
               <div className="col-md-5">
       		      <h2>Schedule</h2>
+                  <button type="Add" className="btn btn-danger"><a href="#sessionform/">Add</a></button>
+                  <button type="submit" className="btn btn-primary">Edit</button>
+
               </div>
       	    </section>
             <section id="middle">
