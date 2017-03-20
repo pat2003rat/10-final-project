@@ -8,9 +8,16 @@ class Splash extends React.Component {
       <div className = "container">
         <div className = "row">
           <a href="#login/"> <button className="btn btn-primary"> Login </button> </a>
-          <div> Splash Screen </div>
+          <div className = "">
+            <div className = "">
+              <div className = "">
+                <div className = ""> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
     )
   }
 };
