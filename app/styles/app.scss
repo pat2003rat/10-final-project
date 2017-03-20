@@ -17,6 +17,30 @@ img {
 
 body {
   background: url('../images/soccerfield.jpg');
+  // position: absolute;
+  // z-index: -1;
   // background-size: cover;
   // background-repeat: no-repeat;
+};
+
+.clipboard {
+// margin: 0 auto;
+// width: 80em;
+padding-left: 100px;
+position: absolute;
+z-index: -1;
+};
+
+.clipboardpositioning{
+text-align: center;
+padding-top: 200px;
+padding-left: 320px
+};
+
+.form-vertical{
+  text-align: center;
+}
+
+.well {
+  height: 70px;
 };

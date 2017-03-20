@@ -2,15 +2,20 @@ var $ = require('jquery');
 var React = require('react');
 var Backbone = require('backbone');
 
-class SessionForm extends React.Component {
 
+class SessionForm extends React.Component {
     render() {
         return (
+
           <div>
-            <div className = "col-md-8">
-          <form className="form-vertical">
-            <h2>Training Report</h2>
-              <div className="form-group">
+            <img className="clipboard" src="./images/clipboard.png" alt="" />
+          <div className = "clipboardpositioning">
+
+            <div className = "col-md-5">
+              <form className="form-vertical">
+              <h1>Training Report</h1>
+              <br></br>
+                <div className="form-group">
                 <label htmlFor="input" className="col-md-6">Date
                 </label>
                   <input className="form-control" id="inputDate" placeholder="Date" type="text"/>
@@ -18,6 +23,7 @@ class SessionForm extends React.Component {
               <div className="form-group">
                 <label htmlFor="inputTime" className="col-md-6">Time</label>
                 <input className="form-control" id="inputTime" placeholder="Time" type="time"/>
+
               </div>
               <div className="form-group">
                 <label htmlFor="textArea" className="col-md-6">Training Description</label>
@@ -44,6 +50,7 @@ class SessionForm extends React.Component {
                 </div>
               </div>
           </form>
+          </div>
           </div>
           </div>
 
