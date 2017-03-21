@@ -9,7 +9,7 @@ class Splash extends React.Component {
         <div className = "row">
           <a href="#login/"> <button className="btn btn-primary"> Login </button> </a>
           <div className = "well">
-            <span><h1><img src="./images/logo.png" ></img></h1></span>
+            <span><h1><img src="./images/logo.png"></img></h1></span>
           </div>
         </div>
       </div>

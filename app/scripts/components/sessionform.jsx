@@ -1,6 +1,7 @@
 var $ = require('jquery');
 var React = require('react');
 var Backbone = require('backbone');
+var Header = require('./layouts/header.jsx').Header;
 
 
 class SessionForm extends React.Component {
@@ -41,15 +42,19 @@ class SessionForm extends React.Component {
     var sessionForm = new SessionForm(this.state);
 
     sessionForm.save().then(function(data){
+      Backbone.history.navigate('userAccount/', {trigger: true});
 
-    })
+    });
   }
 
   render() {
       return (
 
-        <div>
-          <img className="clipboard" src="./images/clipboard.png" alt="" />
+        <div className="container-fluid">
+
+        <Header />
+
+        <img className="clipboard" src="./images/clipboard.png" alt="" />
         <div className = "clipboardpositioning">
 
           <div className = "col-md-5">
@@ -67,7 +72,7 @@ class SessionForm extends React.Component {
             </div>
             <div className="form-group">
               <label htmlFor="textArea" className="col-md-6">Training Description</label>
-              <textarea className="form-control" rows="3" id="inputDescription" placeholder="Training breakdown here"></textarea>
+              <textarea onChange={this.handleDescription} rows="3" id="inputDescription" placeholder="Training breakdown here"></textarea>
             </div>
             <div className="form-group">
               <label className="col-md-6">Videos</label>

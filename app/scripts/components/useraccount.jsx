@@ -2,6 +2,7 @@ var $ = require('jquery');
 var React = require('react');
 var Backbone = require('backbone');
 var Wunderground = require('../models/wunderground').Wunderground;
+var Header = require('./layouts/header.jsx').Header;
 
 class UserAccount extends React.Component {
   constructor(props){
@@ -20,6 +21,8 @@ class UserAccount extends React.Component {
     render(){
       return (
         <div className="container">
+
+          <Header />
           <div className="title text-center">
             <h1>Training Dean</h1>
           </div>

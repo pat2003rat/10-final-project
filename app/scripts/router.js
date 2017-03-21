@@ -78,7 +78,7 @@ var AppRouter = Backbone.Router.extend({
     )
   },
   sessionForm: function(){
-    console.log(SessionForm);
+    // console.log(SessionForm);
     ReactDOM.render(
       React.createElement(SessionForm),
       document.getElementById("app")
