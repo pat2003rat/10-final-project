@@ -28,8 +28,8 @@ class Login extends React.Component {
 
   handleLogin(e) {
     e.preventDefault();
-    this.user.login(this.state, function(){
-      Backbone.history.navigate('userAccount/', { trigger: true} );
+    User.login(this.state, function() {
+        Backbone.history.navigate('userAccount/', { trigger: true} );
     });
   }
   render() {

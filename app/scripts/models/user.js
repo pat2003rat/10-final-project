@@ -2,20 +2,22 @@ var $ = require('jquery');
 var Backbone = require('backbone');
 
 var parse = require('../parse');
+var ParseModel = require('../parse').ParseModel;
 
-var User = Backbone.Model.extend({
+var User = ParseModel.extend({
   idAttribute: 'objectId',
-  urlRoot: function(){
-    return parse.BASE_API_URL + '/users';
-  },
+  urlRoot: 'https://patrickratigan.herokuapp.com/users'
+  },{
   login: function(credentials, callback){
-    var url = parse.BASE_API_URL + '/login?' + $.param(credentials);
+    var url = 'https://patrickratigan.herokuapp.com' + '/login?' + $.param(credentials);
+    parse.parse.initialize();
     $.get(url).then(data => {
       var newUser = new User(data);
       var store = this.store;
       store(newUser);
       callback(newUser);
     });
+    
   },
   signup: function(credentials){
     var newUser= new User(credentials);
@@ -45,5 +47,6 @@ var User = Backbone.Model.extend({
   }
 });
 
-
-module.exports = {User}
+module.exports = {
+  User
+}

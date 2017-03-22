@@ -25,7 +25,12 @@ class SessionForm extends React.Component {
   }
 
   handleDate(e) {
-    this.setState({date: e.target.value});
+    var date = new Date(e.target.value)
+    var dateParse = {
+      "__type" : "Date",
+      "iso" : date
+    }
+    this.setState({ date: dateParse });
   }
 
   handleTime(e) {
@@ -42,11 +47,11 @@ class SessionForm extends React.Component {
 
   handleSessionForm(e){
     e.preventDefault();
-
-    console.log(this.state);
+    
     var sessionCollection = new SessionCollection();
     sessionCollection.create(this.state);
-    Backbone.history.navigate('userAccount/', {trigger: true});
+
+    Backbone.history.navigate('userAccount/', { trigger: true });
   }
 
   render() {

@@ -25,11 +25,11 @@ var AppRouter = Backbone.Router.extend({
     "sessionform/": "sessionForm"
 
   },
-  initialize: function(){
-    parse.setup({
-      BASE_API_URL: 'https://patrickratigan.herokuapp.com'
-    });
-},
+//   initialize: function(){
+//     parse.parse.initialize({
+//       BASE_API_URL: 'https://patrickratigan.herokuapp.com'
+//     });
+// },
 
 // execute: function(callback, args, name){
 //   var user = User.current();

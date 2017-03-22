@@ -19,7 +19,7 @@ class UserAccount extends React.Component {
     var sessionCollection = new SessionCollection();
     sessionCollection.fetch().then(() => {
       this.setState({collection: sessionCollection});
-      console.log(this.state.collection);
+      console.log('state', this.state.collection);
     })
     this.state = {
       weather: weather,
@@ -27,6 +27,12 @@ class UserAccount extends React.Component {
     };
   }
     render(){
+      var schedules = this.state.collection.map(function(schedule) {
+        return(
+          <li key={schedule.cid}>{schedule.get('description')}</li>
+        )
+      })
+
       // var sessionModels = this.state.collection.map((sessionModel) => {
       //   return (
       //     // sessionModel
@@ -46,6 +52,9 @@ class UserAccount extends React.Component {
       	    <section id="content">
               <div className="col-md-6">
       		      <h2>Schedule</h2>
+                  <ul>
+                    { schedules }
+                  </ul>
                   <button type="Add" className="btn btn-danger"><a href="#sessionform/">Add</a></button>
                   <button type="submit" className="btn btn-primary">Edit</button>
               </div>

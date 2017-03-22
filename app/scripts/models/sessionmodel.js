@@ -1,18 +1,21 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
 
-var parse = require('../parse');
+var parse = require('../parse').parse;
+var ParseModel = require('../parse').ParseModel;
+var ParseCollection = require('../parse').ParseCollection;
 
-var SessionModel = Backbone.Model.extend({
+var SessionModel = ParseModel.extend({
   idAttribute: 'objectId',
-  urlRoot: function(){
-    return parse.BASE_API_URL + '/Session';
-  }
+  urlRoot: 'https://patrickratigan.herokuapp.com/classes/Schedule'
 });
 
-var SessionCollection = Backbone.Collection.extend({
+var SessionCollection = ParseCollection.extend({
   model: SessionModel,
-  url: parse.BASE_API_URL + '/Session'
+  baseUrl: 'https://patrickratigan.herokuapp.com/classes/Schedule'
 });
 
-module.exports = {SessionModel, SessionCollection};
+module.exports = {
+  SessionModel,
+  SessionCollection
+};

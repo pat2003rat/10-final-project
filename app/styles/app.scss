@@ -54,3 +54,15 @@ padding-left: 570px
 .well {
   height: 70px;
 };
+
+.column-left {
+  float: left; width: 100px;
+}
+
+.column-right {
+  float: right; width: 100px;
+}
+
+.column-center {
+  display: inline-block; width: 100px; 
+}
