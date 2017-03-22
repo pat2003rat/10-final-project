@@ -2,12 +2,12 @@ var $ = require('jquery');
 var React = require('react');
 var Backbone = require('backbone');
 
-var User = require('../models/user');
+var User = require('../models/user').User;
 
 class Login extends React.Component {
   constructor(props){
     super(props);
-
+    this.user = new User();
     this.handleUsername= this.handleUsername.bind(this);
     this.handlePassword= this.handlePassword.bind(this);
     this.handleLogin= this.handleLogin.bind(this);
@@ -28,11 +28,10 @@ class Login extends React.Component {
 
   handleLogin(e) {
     e.preventDefault();
-    User.login(this.state, function(){
+    this.user.login(this.state, function(){
       Backbone.history.navigate('userAccount/', { trigger: true} );
     });
   }
-
   render() {
     return (
       <div>
@@ -52,11 +51,11 @@ class Login extends React.Component {
               <form id="login" onSubmit={this.handleLogin}>
                 <div className="form-group">
                   <label htmlFor="email-login">Email address</label>
-                  <input onChange={this.handleUsername} value={this.state.username} className="form-control" name="email" id="email-login" type="email" placeholder="email"/>
+                  <input onChange={this.handleUsername} value={this.state.username} className="form-control" name="email" id="email-login" type="email" placeholder="Email"/>
                 </div>
                 <div className="form-group">
                   <label htmlFor="password-login">Password</label>
-                  <input onChange={this.handlePassword} value={this.state.password} className="form-control" name="password" id="password-login" type="password" placeholder="Password Please"/>
+                  <input onChange={this.handlePassword} value={this.state.password} className="form-control" name="password" id="password-login" type="password" placeholder="Password"/>
                 </div>
                 <input className="btn btn-primary" type="submit" value="Log Me In!"/>
               </form>
@@ -112,13 +111,13 @@ class SignUp extends React.Component {
           <form onSubmit={this.handleSignup} id="signup">
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input onChange={this.handleUsername} id="signup-email" className="form-control" type="email" name="email" placeholder="Email Address" required />
+              <input onChange={this.handleUsername} id="signup-email" className="form-control" type="email" name="email" placeholder="Email" required/>
             </div>
             <div className="form-group">
               <label htmlFor="email">Password</label>
-              <input onChange={this.handlePassword} id="signup-password" className="form-control" type="password" name="password" placeholder="Don't Share This!" required/>
+              <input onChange={this.handlePassword} id="signup-password" className="form-control" type="password" name="password" placeholder="Password" required/>
             </div>
-            <input className="btn btn-primary" type="submit" value="Sign Up!"/>
+            <input className="btn btn-primary" type="submit" value="Sign Me Up!"/>
           </form>
          </div>
       </div>

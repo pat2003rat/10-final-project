@@ -3,6 +3,10 @@ var React = require('react');
 var Backbone = require('backbone');
 var Wunderground = require('../models/wunderground').Wunderground;
 var Header = require('./layouts/header.jsx').Header;
+var SessionCollection = require('../models/sessionmodel.js').SessionCollection;
+
+
+// var session = new Session;
 
 class UserAccount extends React.Component {
   constructor(props){
@@ -12,16 +16,24 @@ class UserAccount extends React.Component {
     //   console.log(weather);
     //   this.setState({weather})
     // })
-
+    var sessionCollection = new SessionCollection();
+    sessionCollection.fetch().then(() => {
+      this.setState({collection: sessionCollection});
+      console.log(this.state.collection);
+    })
     this.state = {
-      weather
-  };
-
-}
+      weather: weather,
+      collection: sessionCollection
+    };
+  }
     render(){
+      // var sessionModels = this.state.collection.map((sessionModel) => {
+      //   return (
+      //     // sessionModel
+      //   )
+      // })
       return (
         <div className="container">
-
           <Header />
           <div className="title text-center">
             <h1>Training Dean</h1>
@@ -29,7 +41,7 @@ class UserAccount extends React.Component {
           <div id="pagewrap">
             <header>
 
-      		    <h2>Welcome to your Training Sessions</h2>
+      		    <h2>Welcome 'name' to your Training Sessions</h2>
       	    </header>
       	    <section id="content">
               <div className="col-md-6">

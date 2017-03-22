@@ -1,9 +1,6 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
 
-
-//require in where to store information..
-
 var Youtube = Backbone.Model.extend({
   urlRoot: 'https://patrickratigan.herokuapp.com/classes/youtube',
 });

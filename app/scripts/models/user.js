@@ -7,20 +7,21 @@ var User = Backbone.Model.extend({
   idAttribute: 'objectId',
   urlRoot: function(){
     return parse.BASE_API_URL + '/users';
-  }
-}, {
+  },
   login: function(credentials, callback){
     var url = parse.BASE_API_URL + '/login?' + $.param(credentials);
     $.get(url).then(data => {
       var newUser = new User(data);
-      User.store(newUser);
+      var store = this.store;
+      store(newUser);
       callback(newUser);
     });
   },
   signup: function(credentials){
     var newUser= new User(credentials);
+    var store = this.store;
     newUser.save().then(() => {
-      User.store(newUser);
+      store(newUser);
     });
     return newUser;
   },
@@ -45,4 +46,4 @@ var User = Backbone.Model.extend({
 });
 
 
-module.exports = User
+module.exports = {User}
