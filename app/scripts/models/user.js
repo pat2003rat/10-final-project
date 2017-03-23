@@ -39,7 +39,7 @@ var User = ParseModel.extend({
     }
     var currentUser = new User(JSON.parse(user));
 
-    if (!currentUser.get('sessionToken')){
+    if (!currentUser.get('scheduleToken')){
       return false;
     }
 

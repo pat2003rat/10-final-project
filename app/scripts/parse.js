@@ -17,8 +17,8 @@ var parse = {
         xhr.setRequestHeader("X-Parse-Application-Id", "patrick");
         xhr.setRequestHeader("X-Parse-REST-API-Key", "gunner");
 
-        if (config.sessionId) {
-          xhr.setRequestHeader("X-Parse-Session-Token", config.sessionId)
+        if (config.scheduleId) {
+          xhr.setRequestHeader("X-Parse-Schedule-Token", config.scheduleId)
         }
       }
     });
@@ -29,7 +29,7 @@ var parse = {
       beforeSend: function(xhr){
         xhr.setRequestHeader("X-Parse-Application-Id", null);
         xhr.setRequestHeader("X-Parse-REST-API-Key", null);
-        xhr.setRequestHeader("X-Parse-Session-Token", null);
+        xhr.setRequestHeader("X-Parse-Schedule-Token", null);
       }
     })
   }
@@ -43,7 +43,7 @@ var ParseModel = Backbone.Model.extend({
     var user = new User();
 
     if(user){
-      parse.initialize({sessionId: user.get('sessionToken')});
+      parse.initialize({scheduleId: user.get('scheduleToken')});
     }else{
       parse.initialize();
     }
@@ -80,7 +80,7 @@ var ParseCollection = Backbone.Collection.extend({
     var user = User.current();
 
     if(user){
-      parse.initialize({sessionId: user.get('sessionToken')});
+      parse.initialize({scheduleId: user.get('scheduleToken')});
     }else{
       parse.initialize();
     }

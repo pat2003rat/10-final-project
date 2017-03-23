@@ -5,7 +5,7 @@ var Backbone = require('backbone');
 
 
 var Login = require('./components/login.jsx').Login;
-var SessionForm = require('./components/sessionform.jsx').SessionForm;
+var ScheduleForm = require('./components/scheduleform.jsx').ScheduleForm;
 var AddEdit = require('./components/addedit.jsx').AddEdit;
 var Splash = require('./components/splash.jsx').Splash;
 var UserAccount = require('./components/useraccount.jsx').UserAccount;
@@ -22,7 +22,7 @@ var AppRouter = Backbone.Router.extend({
     "userAccount/": "userAccount",
     "addEdit/": "addEdit",
     "videos/": "videos",
-    "sessionform/": "sessionForm"
+    "scheduleform/": "scheduleForm"
 
   },
 //   initialize: function(){
@@ -77,10 +77,10 @@ var AppRouter = Backbone.Router.extend({
       document.getElementById("app")
     )
   },
-  sessionForm: function(){
-    // console.log(SessionForm);
+  scheduleForm: function(){
+    // console.log(ScheduleForm);
     ReactDOM.render(
-      React.createElement(SessionForm),
+      React.createElement(ScheduleForm),
       document.getElementById("app")
     )
   }

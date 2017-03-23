@@ -18,7 +18,7 @@ class Header extends React.Component {
               <img className="logo" src="./images/logo.png" ></img>
               <span className="links"><a href="#login/">Login</a></span>
               <span className="links"><a href="#login/">Log Out</a></span>
-              <span className="links"><a href="#sessionform/">Create A Session</a></span>
+              <span className="links"><a href="#scheduleform/">Create A Schedule</a></span>
               <span className="links"><a href="#userAccount/">{user.get('name') + "'s"} Account</a></span>
           </div>
         </div>

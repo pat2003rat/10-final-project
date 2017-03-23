@@ -3,10 +3,10 @@ var React = require('react');
 var Backbone = require('backbone');
 var Wunderground = require('../models/wunderground').Wunderground;
 var Header = require('./layouts/header.jsx').Header;
-var SessionCollection = require('../models/sessionmodel.js').SessionCollection;
+var ScheduleCollection = require('../models/schedulemodel.js').ScheduleCollection;
 
 
-// var session = new Session;
+// var schedule = new Schedule;
 
 class UserAccount extends React.Component {
   constructor(props){
@@ -15,15 +15,15 @@ class UserAccount extends React.Component {
     // weather.fetch().then(()=>{
     //   console.log(weather);
     //   this.setState({weather})
-    // })
-    var sessionCollection = new SessionCollection();
-    sessionCollection.fetch().then(() => {
-      this.setState({collection: sessionCollection});
+    })
+    var scheduleCollection = new ScheduleCollection();
+    scheduleCollection.fetch().then(() => {
+      this.setState({collection: scheduleCollection});
       console.log('state', this.state.collection);
     })
     this.state = {
       weather: weather,
-      collection: sessionCollection
+      collection: scheduleCollection
     };
   }
     render(){
@@ -33,9 +33,9 @@ class UserAccount extends React.Component {
         )
       })
 
-      // var sessionModels = this.state.collection.map((sessionModel) => {
+      // var scheduleModels = this.state.collection.map((scheduleModel) => {
       //   return (
-      //     // sessionModel
+      //     // scheduleModel
       //   )
       // })
       return (
@@ -47,7 +47,7 @@ class UserAccount extends React.Component {
           <div id="pagewrap">
             <header>
 
-      		    <h2>Welcome 'name' to your Training Sessions</h2>
+      		    <h2>Welcome 'name' to your Training Schedules</h2>
       	    </header>
       	    <section id="content">
               <div className="col-md-6">
@@ -55,7 +55,7 @@ class UserAccount extends React.Component {
                   <ul>
                     { schedules }
                   </ul>
-                  <button type="Add" className="btn btn-danger"><a href="#sessionform/">Add</a></button>
+                  <button type="Add" className="btn btn-danger"><a href="#scheduleform/">Add</a></button>
                   <button type="submit" className="btn btn-primary">Edit</button>
               </div>
       	    </section>

@@ -2,19 +2,19 @@ var $ = require('jquery');
 var React = require('react');
 var Backbone = require('backbone');
 var Header = require('./layouts/header.jsx').Header;
-var SessionModel = require('../models/sessionmodel.js').SessionModel;
-var SessionCollection = require('../models/sessionmodel.js').SessionCollection;
+var ScheduleModel = require('../models/schedulemodel.js').ScheduleModel;
+var ScheduleCollection = require('../models/schedulemodel.js').ScheduleCollection;
 
 var parse = require('../parse');
 
-class SessionForm extends React.Component {
+class ScheduleForm extends React.Component {
   constructor(props){
     super(props);
     this.handleDate = this.handleDate.bind(this);
     this.handleTime = this.handleTime.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
     this.handleVideo = this.handleVideo.bind(this);
-    this.handleSessionForm = this.handleSessionForm.bind(this);
+    this.handleScheduleForm = this.handleScheduleForm.bind(this);
 
     this.state = {
       date: '',
@@ -45,11 +45,11 @@ class SessionForm extends React.Component {
     this.setState({video: e.target.value});
   }
 
-  handleSessionForm(e){
+  handleScheduleForm(e){
     e.preventDefault();
-    
-    var sessionCollection = new SessionCollection();
-    sessionCollection.create(this.state);
+
+    var scheduleCollection = new ScheduleCollection();
+    scheduleCollection.create(this.state);
 
     Backbone.history.navigate('userAccount/', { trigger: true });
   }
@@ -65,7 +65,7 @@ class SessionForm extends React.Component {
         <div className = "clipboardpositioning">
 
           <div className = "col-md-5">
-            <form className="form-vertical" onSubmit={this.handleSessionForm}>
+            <form className="form-vertical" onSubmit={this.handleScheduleForm}>
               <h1>Training Report</h1>
               <br></br>
               <div className="form-group">
@@ -109,5 +109,5 @@ class SessionForm extends React.Component {
 };
 
 module.exports = {
-  SessionForm
+  ScheduleForm
 }
