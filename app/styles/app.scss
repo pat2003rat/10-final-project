@@ -51,18 +51,19 @@ padding-left: 570px
   float: right;
   padding-left: 17px;
 }
-.well {
+.wellsessionform {
   height: 70px;
+  background-color: #32CD32;
+  position: static;
 };
 
-.column-left {
-  float: left; width: 100px;
+.wellSessions{
+  background-color: #32CD32;
 }
 
-.column-right {
-  float: right; width: 100px;
+.containerjumbotron {
+  position: relative;
 }
-
-.column-center {
-  display: inline-block; width: 100px; 
+.image{
+  padding-left: 150px;;
 }

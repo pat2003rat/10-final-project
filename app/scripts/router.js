@@ -9,6 +9,7 @@ var ScheduleForm = require('./components/scheduleform.jsx').ScheduleForm;
 var AddEdit = require('./components/addedit.jsx').AddEdit;
 var Splash = require('./components/splash.jsx').Splash;
 var UserAccount = require('./components/useraccount.jsx').UserAccount;
+var ScheduleDetail = require('./components/scheduledetail.jsx').ScheduleDetail;
 // var Videos = require('./components/videos.jsx').Videos;
 
 var User = require('./models/user.js')
@@ -22,7 +23,11 @@ var AppRouter = Backbone.Router.extend({
     "userAccount/": "userAccount",
     "addEdit/": "addEdit",
     "videos/": "videos",
-    "scheduleform/": "scheduleForm"
+    "scheduleform/": "scheduleForm",
+    // Dynamic route
+    // Takes whatever unique identifier that is passed in place of :scheduleId
+    // passes identifier to ScheduleDetail as props.scheduleId
+    "scheduledetail/:scheduleId": "scheduledetail"
 
   },
 //   initialize: function(){
@@ -83,7 +88,18 @@ var AppRouter = Backbone.Router.extend({
       React.createElement(ScheduleForm),
       document.getElementById("app")
     )
+  },
+  scheduledetail: function(scheduleId) {
+    ReactDOM.render(
+      React.createElement(ScheduleDetail, {scheduleId: scheduleId}),
+      document.getElementById("app")
+    )
   }
+  // scheduledetail/:scheduleId: function(){
+    // console.log(ScheduleForm);
+    // ReactDOM.render(
+    //   React.createElement(scheduledetail),
+    //   document.getElementById("app")
 });
 
 var appRouter = new AppRouter();

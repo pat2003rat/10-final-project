@@ -5,6 +5,7 @@ var Header = require('./layouts/header.jsx').Header;
 var ScheduleModel = require('../models/schedulemodel.js').ScheduleModel;
 var ScheduleCollection = require('../models/schedulemodel.js').ScheduleCollection;
 
+
 var parse = require('../parse');
 
 class ScheduleForm extends React.Component {
@@ -30,7 +31,7 @@ class ScheduleForm extends React.Component {
       "__type" : "Date",
       "iso" : date
     }
-    this.setState({ date: dateParse });
+    this.setState({date: dateParse });
   }
 
   handleTime(e) {
@@ -56,54 +57,51 @@ class ScheduleForm extends React.Component {
 
   render() {
       return (
-
         <div className="container">
+          <Header />
+          <img className="clipboard" src="./images/clipboard.png" alt="" />
+          <div className = "clipboardpositioning">
 
-        <Header />
-
-        <img className="clipboard" src="./images/clipboard.png" alt="" />
-        <div className = "clipboardpositioning">
-
-          <div className = "col-md-5">
-            <form className="form-vertical" onSubmit={this.handleScheduleForm}>
-              <h1>Training Report</h1>
-              <br></br>
-              <div className="form-group">
+            <div className = "col-md-5">
+              <form className="form-vertical" onSubmit={this.handleScheduleForm}>
+                <h1>Training Report</h1>
+                <br></br>
+                <div className="form-group">
                 <label htmlFor="input" className="col-md-6">Date</label>
                 <input onChange={this.handleDate} id="inputDate" placeholder="Date" type="date"/>
               </div>
-              <div className="form-group">
-                <label htmlFor="inputTime" className="col-md-6">Time</label>
-                <input onChange={this.handleTime} id="inputTime" placeholder="Time" type="time"/>
+            <div className="form-group">
+              <label htmlFor="inputTime" className="col-md-6">Time</label>
+              <input onChange={this.handleTime} id="inputTime" placeholder="Time" type="time"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="textArea" className="col-md-6">Training Description</label>
+              <textarea onChange={this.handleDescription} rows="3" id="inputDescription" placeholder="Training breakdown here"></textarea>
+            </div>
+            <div className="form-group">
+              <label className="col-md-6">Videos</label>
+            </div>
+            <div className="form-group">
+              <label htmlFor="select" className="col-md-6"></label>
+              <select className="form-control" id="videos">
+                <option>Goalkeeping</option>
+                <option>Finishing</option>
+                <option>Fitness</option>
+                <option>Defending</option>
+                <option>Set Pieces</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <div className="col-md-6">
+                <button type="cancel" className="btn btn-primary">Cancel</button>
+                <button type="clear" className="btn btn-warning">Clear Form</button>
+                <button type="submit" className="btn btn-danger">Submit</button>
               </div>
-              <div className="form-group">
-                <label htmlFor="textArea" className="col-md-6">Training Description</label>
-                <textarea onChange={this.handleDescription} rows="3" id="inputDescription" placeholder="Training breakdown here"></textarea>
-              </div>
-              <div className="form-group">
-                <label className="col-md-6">Videos</label>
-              </div>
-              <div className="form-group">
-                <label htmlFor="select" className="col-md-6"></label>
-                <select className="form-control" id="videos">
-                  <option>Goalkeeping</option>
-                  <option>Finishing</option>
-                  <option>Fitness</option>
-                  <option>Defending</option>
-                  <option>Set Pieces</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <div className="col-md-6">
-                  <button type="cancel" className="btn btn-primary">Cancel</button>
-                  <button type="clear" className="btn btn-warning">Clear Form</button>
-                  <button type="submit" className="btn btn-danger">Submit</button>
-                </div>
-              </div>
-            </form>
-          </div>
+            </div>
+              </form>
         </div>
       </div>
+    </div>
     )
   }
 };
