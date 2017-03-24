@@ -6,11 +6,12 @@ class Splash extends React.Component {
   render (){
     return (
       <div id="container" >
-        <a href="#login/"> <button className="btn btn-primary"> Login </button> </a>
-        <span><h1><img src="./images/logo.png"></img></h1></span>
+        <span><h1>Be your own<img src="./images/logo.png"></img></h1></span>
+          <a href="#login/"> <button className="btn btn-primary"> Login </button> </a>
+
         <div className="imgContainer">
-            <img className="image" src="./images/splash1.gif"></img>
-            <img className="image" src="https://media.giphy.com/media/Irqe12yuXROuI/giphy.gif"></img>
+
+            <img className="splashimage" src="./images/splash1.gif"></img>
         </div>
       </div>
     )
