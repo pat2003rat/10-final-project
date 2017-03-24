@@ -17,8 +17,16 @@ var User = ParseModel.extend({
       store(newUser);
       callback(newUser);
     });
-    
+
   },
+
+  logout: function(){
+    var url = 'https://patrickratigan.herokuapp.com' + '/logout';
+    $.post(url).then((event) =>{
+      console.log('your are logged out');
+      localStorage.removeItem('user');
+  })},
+
   signup: function(credentials){
     var newUser= new User(credentials);
     var store = this.store;

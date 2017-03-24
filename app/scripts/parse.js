@@ -6,8 +6,6 @@ var parse = {
 
   initialize: function(config){
     config = config || {};
-
-    // console.log('config', config);
     if(config.BASE_API_URL){
       this.BASE_API_URL = config.BASE_API_URL;
     }
@@ -50,7 +48,7 @@ var ParseModel = Backbone.Model.extend({
 
     var xhr = Backbone.Model.prototype.sync.apply(this, arguments);
 
-    parse.deinitialize();
+    // parse.deinitialize();
 
     return xhr;
   },
@@ -87,7 +85,7 @@ var ParseCollection = Backbone.Collection.extend({
 
     var xhr = Backbone.Collection.prototype.sync.apply(this, arguments);
 
-    parse.deinitialize();
+    // parse.deinitialize();
 
     return xhr;
   },
