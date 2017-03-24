@@ -24,14 +24,22 @@ class ScheduleDetail extends React.Component {
     return (
       <div>
         <Header />
-        <div className = "wellsessionform">
-          <div>
-            <p>{this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm:ss a') : ""}</p>
+        <div className = "col-md-12">
+          <div className = "col-md-4 wellsessionform">
+            <p>{this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm a') : ""}</p>
             <p>{this.state.model ? this.state.model.get('description') : ""}</p>
             <button type="submit" className="btn btn-danger">Delete</button>
           </div>
-        </div>
+
+      <div className = "col-md-4">
+        Weather
       </div>
+
+      <div className = "col-md-4">
+      </div>
+    </div>
+
+    </div>
     )
   }
 }

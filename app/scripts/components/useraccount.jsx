@@ -31,11 +31,11 @@ class UserAccount extends React.Component {
       var scheduleTime = schedule.get('time');
       var scheduleTimeNumber = Number(scheduleTime);
       var scheduleId = schedule.get('objectId')
-      console.log('schedule time', scheduleTime);
-      console.log('schedule time type', scheduleTimeNumber);
+      // console.log('schedule time', scheduleTime);
+      // console.log('schedule time type', scheduleTimeNumber);
       return(
         <li key={schedule.cid}>
-          <a href={"#scheduledetail/" + scheduleId }>{ moment(schedule.get('date').iso ).format('dddd, LL, h:mm:ss a')}</a>
+          <a href={"#scheduledetail/" + scheduleId }>{ moment(schedule.get('date').iso ).format('dddd, LL h:mm a')}</a>
 
 
           {/* {schedule.get('description')} */}

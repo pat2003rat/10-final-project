@@ -3,7 +3,8 @@ var React = require('react');
 var Backbone = require('backbone');
 
 class Videos extends React.Component {
-    render(return (
+    render() {
+      return (
       <div className="container">
         <div className="row">
           <a href="#useraccount/">
@@ -18,7 +19,6 @@ class Videos extends React.Component {
     </div>
     )}
 };
-
 module.exports = {
 Videos
 };

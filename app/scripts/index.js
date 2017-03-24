@@ -26,10 +26,10 @@ $.get({
   console.log('data items', data.items)
   // Show all objects
   data.items.forEach( function(obj) {
-    console.log(obj.snippet.description);
+    console.log(obj.snippet.title);
   })
   // Show the first object
-  data.items[0].snippet.description;
+  data.items[0].snippet.title;
   // Show the first 5
   for (var i = 0; i < 5; i++) {
     console.log(data.items[i].id.videoId)

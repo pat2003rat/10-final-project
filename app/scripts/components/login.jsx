@@ -45,8 +45,8 @@ class Login extends React.Component {
 
         <div className="container">
           <div className="row">
-            <div className="col-md-12 text-center">
-            <div className="col-md-6">
+            <div className="col-md-12">
+            <div className="col-md-4">
               <h1>Please Login</h1>
               <form id="login" onSubmit={this.handleLogin}>
                 <div className="form-group">
@@ -57,12 +57,19 @@ class Login extends React.Component {
                   <label htmlFor="password-login">Password</label>
                   <input onChange={this.handlePassword} value={this.state.password} className="form-control" name="password" id="password-login" type="password" placeholder="Password"/>
                 </div>
-                <input className="btn btn-primary" type="submit" value="Log Me In!"/>
+                <input className="btn btn-warning" type="submit" value="Log Me In!"/>
               </form>
             </div>
+
+            <div className="col-md-4 runningman">
+              <img className="image" src="./images/splash2.gif"></img>
+            </div>
+
+
+            <SignUp />
+
           </div>
           </div>
-          <SignUp />
         </div>
       </div>
     )
@@ -106,8 +113,8 @@ class SignUp extends React.Component {
   render() {
     return (
       <div>
-        <div className="col-md-6">
-          <h1>No Account? Sign Up!</h1 >
+        <div className="col-md-4">
+          <h1>Sign Up!</h1 >
           <form onSubmit={this.handleSignup} id="signup">
             <div className="form-group">
               <label htmlFor="email">Email</label>
@@ -117,7 +124,7 @@ class SignUp extends React.Component {
               <label htmlFor="email">Password</label>
               <input onChange={this.handlePassword} id="signup-password" className="form-control" type="password" name="password" placeholder="Password" required/>
             </div>
-            <input className="btn btn-primary" type="submit" value="Sign Me Up!"/>
+            <input className="btn btn-danger" type="submit" value="Sign Me Up!"/>
           </form>
          </div>
       </div>

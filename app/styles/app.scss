@@ -54,7 +54,7 @@ padding-left: 570px
 .wellsessionform {
   height: 70px;
   background-color: #32CD32;
-  position: absolute;
+  position: relative;
 };
 
 .wellSessions{
@@ -66,4 +66,9 @@ padding-left: 570px
 }
 .image{
   padding-left: 150px;;
+}
+
+.runningman {
+  padding-top: 100px;
+  right: 100px;
 }
