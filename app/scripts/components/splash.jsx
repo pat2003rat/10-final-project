@@ -10,8 +10,10 @@ class Splash extends React.Component {
           <a href="#login/"> <button className="btn btn-primary"> Login </button> </a>
 
         <div className="imgContainer">
+          <img className="splashimage" src="./images/splash2.gif"></img>
 
-            <img className="splashimage" src="./images/splash1.gif"></img>
+        
+
         </div>
       </div>
     )

@@ -61,8 +61,8 @@ class Login extends React.Component {
               </form>
             </div>
 
-            <div className="col-md-4 runningman">
-              <img className="image" src="./images/splash2.gif"></img>
+            <div className="col-md-4 juggler">
+              <img className="splashimage" src="./images/splash1.gif"></img>
             </div>
 
 
