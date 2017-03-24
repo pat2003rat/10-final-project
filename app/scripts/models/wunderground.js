@@ -12,7 +12,6 @@ sync: function(method,model,options){
 },
 parse: function(data){
   return data.current_observation;
-// console.log(data.current_observation);
 }
 });
 

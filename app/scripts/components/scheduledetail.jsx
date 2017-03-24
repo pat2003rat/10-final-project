@@ -4,6 +4,7 @@ var Backbone = require('backbone');
 var Header = require('./layouts/header.jsx').Header;
 var ScheduleModel = require('../models/schedulemodel.js').ScheduleModel;
 var ScheduleCollection = require('../models/schedulemodel.js').ScheduleCollection;
+var moment = require('moment');
 
 class ScheduleDetail extends React.Component {
   constructor(props) {
@@ -19,16 +20,17 @@ class ScheduleDetail extends React.Component {
     }
   }
   render() {
+    // console.log('date time', this.state.model.get('date').iso);
     return (
       <div>
-        Schedule Detail for {this.props.scheduleId}
         <Header />
         <div className = "wellsessionform">
-        <div>
-          <p>{this.state.model ? this.state.model.get('date').iso : ""}</p>
-          <p>{this.state.model ? this.state.model.get('description') : ""}</p>
+          <div>
+            <p>{this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm:ss a') : ""}</p>
+            <p>{this.state.model ? this.state.model.get('description') : ""}</p>
+            <button type="submit" className="btn btn-danger">Delete</button>
+          </div>
         </div>
-      </div>
       </div>
     )
   }

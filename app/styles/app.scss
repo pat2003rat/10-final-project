@@ -54,7 +54,7 @@ padding-left: 570px
 .wellsessionform {
   height: 70px;
   background-color: #32CD32;
-  position: static;
+  position: absolute;
 };
 
 .wellSessions{
@@ -62,7 +62,7 @@ padding-left: 570px
 }
 
 .containerjumbotron {
-  position: relative;
+  position: absolute;;
 }
 .image{
   padding-left: 150px;;

@@ -10,7 +10,6 @@ class Header extends React.Component {
 
   render(){
     var user = new User();
-    // console.log(user);
     return(
       <div className="container">
         <div className="row">

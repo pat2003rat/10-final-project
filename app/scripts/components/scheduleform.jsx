@@ -26,12 +26,7 @@ class ScheduleForm extends React.Component {
   }
 
   handleDate(e) {
-    var date = new Date(e.target.value)
-    var dateParse = {
-      "__type" : "Date",
-      "iso" : date
-    }
-    this.setState({date: dateParse });
+    this.setState({date: e.target.value });
   }
 
   handleTime(e) {
@@ -49,8 +44,20 @@ class ScheduleForm extends React.Component {
   handleScheduleForm(e){
     e.preventDefault();
 
+    var newDate = new Date(this.state.date + ' ' + this.state.time);
+
+    var dateParse = {
+      "__type" : "Date",
+      "iso" : newDate
+    };
+
     var scheduleCollection = new ScheduleCollection();
-    scheduleCollection.create(this.state);
+    var scheduleModel = new ScheduleModel({
+      date: dateParse,
+      description: this.state.description
+    })
+
+    scheduleCollection.create(scheduleModel);
 
     Backbone.history.navigate('userAccount/', { trigger: true });
   }

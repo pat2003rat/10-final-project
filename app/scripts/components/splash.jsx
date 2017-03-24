@@ -5,7 +5,7 @@ var Backbone = require('backbone');
 class Splash extends React.Component {
   render (){
     return (
-      <div id="container " >
+      <div id="container" >
         <a href="#login/"> <button className="btn btn-primary"> Login </button> </a>
         <span><h1><img src="./images/logo.png"></img></h1></span>
         <div className="imgContainer">

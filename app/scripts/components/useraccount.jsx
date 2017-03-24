@@ -14,7 +14,7 @@ class UserAccount extends React.Component {
     super(props);
     var weather = new Wunderground;
     // weather.fetch().then(()=>{
-    //   console.log(weather);
+    //   console.log(this.state.weather);
     //   this.setState({weather})
     // })
     var scheduleCollection = new ScheduleCollection();
@@ -28,10 +28,16 @@ class UserAccount extends React.Component {
   }
   render(){
     var schedules = this.state.collection.map(function(schedule) {
+      var scheduleTime = schedule.get('time');
+      var scheduleTimeNumber = Number(scheduleTime);
       var scheduleId = schedule.get('objectId')
+      console.log('schedule time', scheduleTime);
+      console.log('schedule time type', scheduleTimeNumber);
       return(
         <li key={schedule.cid}>
-          <a href={"#scheduledetail/" + scheduleId }>{moment(schedule.get('date').iso).format('LLLL')}</a>
+          <a href={"#scheduledetail/" + scheduleId }>{ moment(schedule.get('date').iso ).format('dddd, LL, h:mm:ss a')}</a>
+
+
           {/* {schedule.get('description')} */}
         </li>
 
@@ -66,10 +72,13 @@ class UserAccount extends React.Component {
       	    </section>
             <section id="middle">
               <div className="col-md-6 text-center">
-                <h2>Weather</h2>
+                <h2>Today's Weather</h2>
                 <span><a href={this.state.weather.get('ob_url')}>Forecast</a></span>
+                <p>Temperature<span>{this.state.weather.get('temp_f')}</span></p>
+                <p>Relative Humidity<span>{this.state.weather.get('relative_humidity')}</span></p>
                 <span><img src={this.state.weather.get('icon_url')}/></span>
               </div>
+
             </section>
           <div className="col-md-5 text-center">
 

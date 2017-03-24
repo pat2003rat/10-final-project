@@ -12,7 +12,7 @@ var YoutubeCollection = Backbone.Collection.extend({
   },
 
   parse: function(data){
-    return data.results;
+    return data.obj.snippet.description;
   }
 });
 
