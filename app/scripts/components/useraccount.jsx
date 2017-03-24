@@ -61,11 +61,11 @@ class UserAccount extends React.Component {
       	    <section id="content">
               <div className="col-md-6">
       		      <h2>Schedule</h2>
-                  <ul>
                     <div className="wellSessions">
-                    { schedules }
+                      <ul className="schedulelisting">
+                        { schedules }
+                      </ul>
                     </div>
-                  </ul>
                   <button type="Add" className="btn btn-danger"><a href="#scheduleform/">Add</a></button>
                   {/* // <button type="submit" className="btn btn-primary">Edit</button> */}
               </div>

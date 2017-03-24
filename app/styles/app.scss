@@ -58,12 +58,13 @@ padding-left: 570px
 };
 
 .wellSessions{
-  background-color: #32CD32;
+  background-color: #15DB95;
 }
 
 .containerjumbotron {
   position: absolute;;
 }
+
 .image{
   padding-left: 150px;;
 }
@@ -71,4 +72,12 @@ padding-left: 570px
 .runningman {
   padding-top: 100px;
   right: 100px;
+};
+
+.schedulelisting {
+  list-style-type: square;
+}
+
+.href {
+    color: hotpink;
 }
