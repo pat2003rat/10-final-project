@@ -422,7 +422,7 @@ class Splash extends React.Component {
 
           React.createElement("div", {className: "col-md-4"}, 
                 React.createElement("div", {className: "backgroundusercolor"}, 
-            React.createElement("h2", null, "Diego Maradona"), React.createElement("img", {src: "./images/maradona.jpg"}), 
+            React.createElement("h2", null, "Diego Maradona"), React.createElement("img", {src: "./images/Maradona.jpg"}), 
             React.createElement("p", null, "Training Dean is the reason why people succeed. It is because of hard work. Luck has nothing to do with success.")
           )
           )
