@@ -457,10 +457,10 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    // weather.fetch().then(()=>{
-    //   console.log(this.state.weather);
-    //   this.setState({weather})
-    // })
+    weather.fetch().then(()=>{
+      console.log(this.state.weather);
+      this.setState({weather})
+    })
     var scheduleCollection = new ScheduleCollection();
     scheduleCollection.fetch().then(() => {
       this.setState({collection: scheduleCollection});
@@ -553,27 +553,27 @@ var Backbone = require('backbone');
 require('./router');
 
 $(function(){
-  Backbone.history.start()
+  Backbone.history.start();
 });
 
 // create a backbone model...
 
- var apiUrl2 = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCTIcYdo-4uX8PxXmAJi4aoA&order=viewCount&q=goalkeeper&key=AIzaSyCidEIvUwufNW7-irKd9df0ceTyetzjLME'
+var apiUrl2 = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCTIcYdo-4uX8PxXmAJi4aoA&order=viewCount&q=goalkeeper&key=AIzaSyCidEIvUwufNW7-irKd9df0ceTyetzjLME';
 
 $.get({
   url: apiUrl2,
   dataType: 'jsonp'
 }).done(function(data){
-  console.log('data items', data.items)
+  console.log('data items', data.items);
   // Show all objects
   data.items.forEach( function(obj) {
     console.log(obj.snippet.title);
-  })
+  });
   // Show the first object
   data.items[0].snippet.title;
   // Show the first 5
   for (var i = 0; i < 5; i++) {
-    console.log(data.items[i].id.videoId)
+    console.log(data.items[i].id.videoId);
   }
 });
 
@@ -612,11 +612,11 @@ var ParseModel = require('../parse').ParseModel;
 var User = ParseModel.extend({
   idAttribute: 'objectId',
   urlRoot: 'https://patrickratigan.herokuapp.com/users'
-  },{
-  login: function(credentials, callback){
-    var url = 'https://patrickratigan.herokuapp.com' + '/login?' + $.param(credentials);
-    parse.parse.initialize();
-    $.get(url).then(data => {
+} , {
+      login: function(credentials, callback){
+      var url = 'https://patrickratigan.herokuapp.com' + '/login?' + $.param(credentials);
+      parse.parse.initialize();
+      $.get(url).then(data => {
       var newUser = new User(data);
       var store = this.store;
       store(newUser);
@@ -625,21 +625,21 @@ var User = ParseModel.extend({
 
   },
 
-  logout: function(){
+    logout: function(){
     var url = 'https://patrickratigan.herokuapp.com' + '/logout';
     $.post(url).then((event) =>{
       localStorage.removeItem('user');
-  })},
+    })},
 
-  signup: function(credentials){
-    var newUser= new User(credentials);
+    signup: function(credentials){
+    var newUser = new User(credentials);
     var store = this.store;
     newUser.save().then(() => {
       store(newUser);
     });
     return newUser;
   },
-  store: function(user){
+    store: function(user){
     localStorage.setItem('user', JSON.stringify(user.toJSON()));
   },
 
@@ -669,15 +669,15 @@ var Backbone = require('backbone');
 
 var Wunderground = Backbone.Model.extend({
   urlRoot: function(){
-    // return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
+    return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
 
   },
-sync: function(method,model,options){
+  sync: function(method, model, options){
   options = options || {};
-  options.dataType = 'jsonp'
+  options.dataType = 'jsonp';
   return Backbone.Model.prototype.sync.call(this, method, model, options);
 },
-parse: function(data){
+  parse: function(data){
   return data.current_observation;
 }
 });
@@ -698,17 +698,17 @@ var parse = {
 
   initialize: function(config){
     config = config || {};
-    if(config.BASE_API_URL){
+    if (config.BASE_API_URL){
       this.BASE_API_URL = config.BASE_API_URL;
     }
 
     $.ajaxSetup({
       beforeSend: function(xhr){
-        xhr.setRequestHeader("X-Parse-Application-Id", "patrick");
-        xhr.setRequestHeader("X-Parse-REST-API-Key", "gunner");
+        xhr.setRequestHeader('X-Parse-Application-Id', 'patrick');
+        xhr.setRequestHeader('X-Parse-REST-API-Key', 'gunner');
 
         if (config.scheduleId) {
-          xhr.setRequestHeader("X-Parse-Schedule-Token", config.scheduleId)
+          xhr.setRequestHeader('X-Parse-Schedule-Token', config.scheduleId);
         }
       }
     });
@@ -717,13 +717,13 @@ var parse = {
   deinitialize: function(){
     $.ajaxSetup({
       beforeSend: function(xhr){
-        xhr.setRequestHeader("X-Parse-Application-Id", null);
-        xhr.setRequestHeader("X-Parse-REST-API-Key", null);
-        xhr.setRequestHeader("X-Parse-Schedule-Token", null);
+        xhr.setRequestHeader('X-Parse-Application-Id', null);
+        xhr.setRequestHeader('X-Parse-REST-API-Key', null);
+        xhr.setRequestHeader('X-Parse-Schedule-Token', null);
       }
-    })
+    });
   }
-}
+};
 
 var ParseModel = Backbone.Model.extend({
   idAttribute: 'objectId',
@@ -732,9 +732,9 @@ var ParseModel = Backbone.Model.extend({
 
     var user = new User();
 
-    if(user){
+    if (user){
       parse.initialize({scheduleId: user.get('scheduleToken')});
-    }else{
+    } else {
       parse.initialize();
     }
 
@@ -752,9 +752,9 @@ var ParseModel = Backbone.Model.extend({
   },
   setPointer: function(field, parseClass, objectId){
     var pointerObject = {
-      "__type": "Pointer",
-      "className": parseClass,
-      "objectId": objectId
+      '__type': 'Pointer',
+      'className': parseClass,
+      'objectId': objectId
     };
 
     this.set(field, pointerObject);
@@ -769,9 +769,9 @@ var ParseCollection = Backbone.Collection.extend({
     var User = require('./models/user').User;
     var user = User.current();
 
-    if(user){
+    if (user){
       parse.initialize({scheduleId: user.get('scheduleToken')});
-    }else{
+    } else {
       parse.initialize();
     }
 
@@ -782,7 +782,7 @@ var ParseCollection = Backbone.Collection.extend({
     return xhr;
   },
   parseWhere: function(field, value, objectId){
-    if(objectId){
+    if (objectId){
       value = {
         field: field,
         className: value,
@@ -797,7 +797,7 @@ var ParseCollection = Backbone.Collection.extend({
   url: function(){
     var url = this.baseUrl;
 
-    if(Object.keys(this.whereClause).length > 0){
+    if (Object.keys(this.whereClause).length > 0){
       url += '?where=' + JSON.stringify(this.whereClause);
       this.whereClause = {};
     }
@@ -813,14 +813,14 @@ var ParseFile = ParseModel.extend({
   urlRoot: function(){
     return 'https://patrickratigan.herokuapp.com/files' + this.get('name');
   }
-})
+});
 
 module.exports = {
   parse,
   ParseModel,
   ParseCollection,
   ParseFile
-}
+};
 
 },{"./models/user":10,"backbone":14,"jquery":42}],13:[function(require,module,exports){
 "use strict";
@@ -838,22 +838,22 @@ var UserAccount = require('./components/useraccount.jsx').UserAccount;
 var ScheduleDetail = require('./components/scheduledetail.jsx').ScheduleDetail;
 // var Videos = require('./components/videos.jsx').Videos;
 
-var User = require('./models/user.js')
+var User = require('./models/user.js');
 var parse = require('./parse.js');
 
 //Controllers
 var AppRouter = Backbone.Router.extend({
-  routes:{
-    "": 'index',
-    "login/": "login",
-    "userAccount/": "userAccount",
-    "addEdit/": "addEdit",
-    "videos/": "videos",
-    "scheduleform/": "scheduleForm",
+  routes: {
+    '': 'index',
+    'login/': 'login',
+    'userAccount/': 'userAccount',
+    'addEdit/': 'addEdit',
+    'videos/': 'videos',
+    'scheduleform/': 'scheduleForm',
     // Dynamic route
     // Takes whatever unique identifier that is passed in place of :scheduleId
     // passes identifier to ScheduleDetail as props.scheduleId
-    "scheduledetail/:scheduleId": "scheduledetail"
+    'scheduledetail/:scheduleId': 'scheduledetail'
 
   },
 //   initialize: function(){
@@ -880,46 +880,46 @@ var AppRouter = Backbone.Router.extend({
 
     ReactDOM.render(
       React.createElement(Splash),
-      document.getElementById("app")
-    )
+      document.getElementById('app')
+    );
   },
 
   login: function(){
     ReactDOM.render(
       React.createElement(Login),
-      document.getElementById("app")
-    )
+      document.getElementById('app')
+    );
   },
   userAccount: function(){
     ReactDOM.render(
       React.createElement(UserAccount), //do i need id: here?//
-      document.getElementById("app")
-    )
+      document.getElementById('app')
+    );
   },
   addEdit: function(){
     ReactDOM.render(
       React.createElement(AddEdit),
-      document.getElementById("app")
-    )
+      document.getElementById('app')
+    );
   },
   videos: function(){
     ReactDOM.render(
       React.createElement(Videos),
-      document.getElementById("app")
-    )
+      document.getElementById('app')
+    );
   },
   scheduleForm: function(){
     // console.log(ScheduleForm);
     ReactDOM.render(
       React.createElement(ScheduleForm),
-      document.getElementById("app")
-    )
+      document.getElementById('app')
+    );
   },
   scheduledetail: function(scheduleId) {
     ReactDOM.render(
       React.createElement(ScheduleDetail, {scheduleId: scheduleId}),
-      document.getElementById("app")
-    )
+      document.getElementById('app')
+    );
   }
   // scheduledetail/:scheduleId: function(){
     // console.log(ScheduleForm);
