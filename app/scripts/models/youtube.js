@@ -8,7 +8,7 @@ var Youtube = Backbone.Model.extend({
 var YoutubeCollection = Backbone.Collection.extend({
   model: Youtube,
   url: function(){
-    return 'https://patrickratigan.herokuapp.com/classes/youtube'
+    return 'https://patrickratigan.herokuapp.com/classes/youtube';
   },
 
   parse: function(data){
@@ -19,4 +19,4 @@ var YoutubeCollection = Backbone.Collection.extend({
 module.exports = {
   Youtube,
   YoutubeCollection
-}
+};

@@ -6,17 +6,17 @@ var parse = {
 
   initialize: function(config){
     config = config || {};
-    if(config.BASE_API_URL){
+    if (config.BASE_API_URL){
       this.BASE_API_URL = config.BASE_API_URL;
     }
 
     $.ajaxSetup({
       beforeSend: function(xhr){
-        xhr.setRequestHeader("X-Parse-Application-Id", "patrick");
-        xhr.setRequestHeader("X-Parse-REST-API-Key", "gunner");
+        xhr.setRequestHeader('X-Parse-Application-Id', 'patrick');
+        xhr.setRequestHeader('X-Parse-REST-API-Key', 'gunner');
 
         if (config.scheduleId) {
-          xhr.setRequestHeader("X-Parse-Schedule-Token", config.scheduleId)
+          xhr.setRequestHeader('X-Parse-Schedule-Token', config.scheduleId);
         }
       }
     });
@@ -25,13 +25,13 @@ var parse = {
   deinitialize: function(){
     $.ajaxSetup({
       beforeSend: function(xhr){
-        xhr.setRequestHeader("X-Parse-Application-Id", null);
-        xhr.setRequestHeader("X-Parse-REST-API-Key", null);
-        xhr.setRequestHeader("X-Parse-Schedule-Token", null);
+        xhr.setRequestHeader('X-Parse-Application-Id', null);
+        xhr.setRequestHeader('X-Parse-REST-API-Key', null);
+        xhr.setRequestHeader('X-Parse-Schedule-Token', null);
       }
-    })
+    });
   }
-}
+};
 
 var ParseModel = Backbone.Model.extend({
   idAttribute: 'objectId',
@@ -40,9 +40,9 @@ var ParseModel = Backbone.Model.extend({
 
     var user = new User();
 
-    if(user){
+    if (user){
       parse.initialize({scheduleId: user.get('scheduleToken')});
-    }else{
+    } else {
       parse.initialize();
     }
 
@@ -60,9 +60,9 @@ var ParseModel = Backbone.Model.extend({
   },
   setPointer: function(field, parseClass, objectId){
     var pointerObject = {
-      "__type": "Pointer",
-      "className": parseClass,
-      "objectId": objectId
+      '__type': 'Pointer',
+      'className': parseClass,
+      'objectId': objectId
     };
 
     this.set(field, pointerObject);
@@ -77,9 +77,9 @@ var ParseCollection = Backbone.Collection.extend({
     var User = require('./models/user').User;
     var user = User.current();
 
-    if(user){
+    if (user){
       parse.initialize({scheduleId: user.get('scheduleToken')});
-    }else{
+    } else {
       parse.initialize();
     }
 
@@ -90,7 +90,7 @@ var ParseCollection = Backbone.Collection.extend({
     return xhr;
   },
   parseWhere: function(field, value, objectId){
-    if(objectId){
+    if (objectId){
       value = {
         field: field,
         className: value,
@@ -105,7 +105,7 @@ var ParseCollection = Backbone.Collection.extend({
   url: function(){
     var url = this.baseUrl;
 
-    if(Object.keys(this.whereClause).length > 0){
+    if (Object.keys(this.whereClause).length > 0){
       url += '?where=' + JSON.stringify(this.whereClause);
       this.whereClause = {};
     }
@@ -121,11 +121,11 @@ var ParseFile = ParseModel.extend({
   urlRoot: function(){
     return 'https://patrickratigan.herokuapp.com/files' + this.get('name');
   }
-})
+});
 
 module.exports = {
   parse,
   ParseModel,
   ParseCollection,
   ParseFile
-}
+};

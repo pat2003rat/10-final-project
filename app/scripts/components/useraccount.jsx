@@ -65,7 +65,7 @@ class UserAccount extends React.Component {
                         { schedules }
                       </ul>
                     </div>
-                  <button type="Add" className="btn btn-danger"><a href="#scheduleform/">Add</a></button>
+                  <a href="#scheduleform/"><button type="Add" className="btn btn-danger">Add</button></a>
                   {/* // <button type="submit" className="btn btn-primary">Edit</button> */}
               </div>
       	    </section>
@@ -73,9 +73,10 @@ class UserAccount extends React.Component {
               <div className="col-md-6 text-center">
                 <h2>Today's Weather</h2>
                 <span><a href={this.state.weather.get('ob_url')}>Forecast</a></span>
-                <p>Temperature<span>{this.state.weather.get('temp_f')}</span></p>
-                <p>Relative Humidity<span>{this.state.weather.get('relative_humidity')}</span></p>
-                <span><img src={this.state.weather.get('icon_url')}/></span>
+                <br></br>
+                  <span><img src={this.state.weather.get('icon_url')}/></span>
+                <p>Temperature <span>{this.state.weather.get('temp_f')}</span></p>
+                <p>Relative Humidity <span>{this.state.weather.get('relative_humidity')}</span></p>
               </div>
 
             </section>

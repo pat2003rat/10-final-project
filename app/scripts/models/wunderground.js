@@ -5,12 +5,12 @@ var Wunderground = Backbone.Model.extend({
     // return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
 
   },
-sync: function(method,model,options){
+  sync: function(method, model, options){
   options = options || {};
-  options.dataType = 'jsonp'
+  options.dataType = 'jsonp';
   return Backbone.Model.prototype.sync.call(this, method, model, options);
 },
-parse: function(data){
+  parse: function(data){
   return data.current_observation;
 }
 });

@@ -7,11 +7,11 @@ var ParseModel = require('../parse').ParseModel;
 var User = ParseModel.extend({
   idAttribute: 'objectId',
   urlRoot: 'https://patrickratigan.herokuapp.com/users'
-  },{
-  login: function(credentials, callback){
-    var url = 'https://patrickratigan.herokuapp.com' + '/login?' + $.param(credentials);
-    parse.parse.initialize();
-    $.get(url).then(data => {
+} , {
+      login: function(credentials, callback){
+      var url = 'https://patrickratigan.herokuapp.com' + '/login?' + $.param(credentials);
+      parse.parse.initialize();
+      $.get(url).then(data => {
       var newUser = new User(data);
       var store = this.store;
       store(newUser);
@@ -20,21 +20,21 @@ var User = ParseModel.extend({
 
   },
 
-  logout: function(){
+    logout: function(){
     var url = 'https://patrickratigan.herokuapp.com' + '/logout';
     $.post(url).then((event) =>{
       localStorage.removeItem('user');
-  })},
+    })},
 
-  signup: function(credentials){
-    var newUser= new User(credentials);
+    signup: function(credentials){
+    var newUser = new User(credentials);
     var store = this.store;
     newUser.save().then(() => {
       store(newUser);
     });
     return newUser;
   },
-  store: function(user){
+    store: function(user){
     localStorage.setItem('user', JSON.stringify(user.toJSON()));
   },
 
