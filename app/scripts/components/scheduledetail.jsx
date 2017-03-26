@@ -10,17 +10,27 @@ class ScheduleDetail extends React.Component {
   constructor(props) {
     super(props)
     var scheduleCollection = new ScheduleCollection();
+    var schedulemodel = new ScheduleModel();
+
+    this.deleteScheduleModel = this.deleteScheduleModel.bind(this);
+
     scheduleCollection.fetch().then(() => {
       var thisModel = scheduleCollection.get(this.props.scheduleId);
       this.setState({collection: scheduleCollection});
       this.setState({model: thisModel});
     })
     this.state = {
-      collection: scheduleCollection
+      collection: scheduleCollection,
+      schedulemodel: schedulemodel
     }
   }
+
+  deleteScheduleModel(){
+    this.state.schedulemodel.destroy()
+    this.setState({schedulemodel: this.state.schedulemodel});
+  }
+
   render() {
-    // console.log('date time', this.state.model.get('date').iso);
     return (
       <div>
         <Header />
@@ -28,20 +38,16 @@ class ScheduleDetail extends React.Component {
           <div className = "col-md-4 wellsessionform">
             <p>{this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm a') : ""}</p>
             <p>{this.state.model ? this.state.model.get('description') : ""}</p>
-            <button type="submit" className="btn btn-danger">Delete</button>
+              <a onClick={(e)=>{e.preventDefault().this.props.deleteScheduleModel()}} className="btn btn-danger">Delete Schedule</a>
           </div>
 
       <div className = "col-md-4">
-
       </div>
-
       <div className = "col-md-4">
         Weather
       </div>
     </div>
-
     </div>
-
     )
   }
 }
