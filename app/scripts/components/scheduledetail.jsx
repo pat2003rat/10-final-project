@@ -32,15 +32,16 @@ class ScheduleDetail extends React.Component {
           </div>
 
       <div className = "col-md-4">
-        Weather
+
       </div>
 
       <div className = "col-md-4">
+        Weather
       </div>
     </div>
 
     </div>
-    
+
     )
   }
 }

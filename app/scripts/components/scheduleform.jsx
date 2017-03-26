@@ -87,10 +87,12 @@ class ScheduleForm extends React.Component {
             </div>
             <div className="form-group">
               <label className="col-md-6">Videos</label>
+
             </div>
             <div className="form-group">
               <label htmlFor="select" className="col-md-6"></label>
               <select className="form-control" id="videos">
+                
                 <option>Goalkeeping</option>
                 <option>Finishing</option>
                 <option>Fitness</option>

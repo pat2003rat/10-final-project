@@ -45,7 +45,7 @@ class Login extends React.Component {
 
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 login">
             <div className="col-md-4">
               <h1>Please Login</h1>
               <form id="login" onSubmit={this.handleLogin}>

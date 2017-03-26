@@ -24,17 +24,13 @@ body {
 };
 
 .clipboard {
-// margin: 0 auto;
-// width: 80em;
-padding-left: 10px;
+  width: 900px;
 position: absolute;
-z-index: -1;
 };
 
 .clipboardpositioning{
-// text-align: center;
-padding-top: 175px;
-padding-left: 570px
+padding-top: 100px;
+padding-left: 170px
 };
 
 
@@ -74,6 +70,7 @@ background-color: #C0C0C0;
 }
 
 .juggler {
+padding-top: 50px;
   left: -90px;
 };
 
@@ -83,4 +80,8 @@ background-color: #C0C0C0;
 
 p {
   background-color: #FFA500;
+}
+
+.login {
+  margin-top: 200px;
 }
