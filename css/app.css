@@ -5768,4 +5768,53 @@ img {
 
 body {
   background: url("../images/soccerfield.jpg"); }
+
+.clipboard {
+  width: 900px;
+  position: absolute; }
+
+.clipboardpositioning {
+  padding-top: 100px;
+  padding-left: 170px; }
+
+.form-vertical {
+  text-align: center; }
+
+.logo {
+  position: relative;
+  margin-top: -85px; }
+
+.links {
+  float: right;
+  padding-left: 17px; }
+
+.wellsessionform {
+  height: 70px;
+  background-color: #32CD32;
+  position: relative; }
+
+.wellSessions {
+  background-color: #15DB95; }
+
+.well {
+  background-color: #C0C0C0; }
+
+.containerjumbotron {
+  position: absolute; }
+
+.splashimage {
+  padding-left: 150px; }
+
+.juggler {
+  padding-top: 50px;
+  left: -90px; }
+
+.schedulelisting {
+  list-style-type: square; }
+
+p {
+  background-color: #FFA500; }
+
+.login {
+  margin-top: 200px; }
 /*# sourceMappingURL=app.css.map */
