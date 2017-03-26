@@ -23,7 +23,6 @@ var User = ParseModel.extend({
   logout: function(){
     var url = 'https://patrickratigan.herokuapp.com' + '/logout';
     $.post(url).then((event) =>{
-      console.log('your are logged out');
       localStorage.removeItem('user');
   })},
 

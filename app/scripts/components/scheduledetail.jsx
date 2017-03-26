@@ -40,6 +40,7 @@ class ScheduleDetail extends React.Component {
     </div>
 
     </div>
+    
     )
   }
 }

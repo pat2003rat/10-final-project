@@ -6,7 +6,6 @@ var Header = require('./layouts/header.jsx').Header;
 var ScheduleCollection = require('../models/schedulemodel.js').ScheduleCollection;
 var moment = require('moment')
 
-
 // var schedule = new Schedule;
 
 class UserAccount extends React.Component {
