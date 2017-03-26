@@ -40,7 +40,7 @@ class Splash extends React.Component {
 
           <div className="col-md-4">
                 <div className = "backgroundusercolor" >
-            <h2>Diego Maradona</h2><img src="./images/maradona.jpg" ></img>
+            <h2>Diego Maradona</h2><img src="./images/Maradona.jpg" ></img>
             <p>Training Dean is the reason why people succeed. It is because of hard work. Luck has nothing to do with success.</p>
           </div>
           </div>
