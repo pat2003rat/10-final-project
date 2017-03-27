@@ -92,7 +92,7 @@ class ScheduleForm extends React.Component {
             <div className="form-group">
               <label htmlFor="select" className="col-md-6"></label>
               <select className="form-control" id="videos">
-                
+
                 <option>Goalkeeping</option>
                 <option>Finishing</option>
                 <option>Fitness</option>
@@ -102,9 +102,9 @@ class ScheduleForm extends React.Component {
             </div>
             <div className="form-group">
               <div className="col-md-6">
-                <button type="cancel" className="btn btn-primary">Cancel</button>
-                <button type="clear" className="btn btn-warning">Clear Form</button>
-                <button type="submit" className="btn btn-danger">Submit</button>
+                <button type="cancel" className="btn btn-primary"> Cancel </button>
+                <button type="clear" className="btn btn-warning"> Clear Form </button>
+                <button type="submit" className="btn btn-danger"> Submit </button>
               </div>
             </div>
               </form>

@@ -66,6 +66,12 @@ class UserAccount extends React.Component {
                       </ul>
                     </div>
                   <a href="#scheduleform/"><button type="Add" className="btn btn-danger">Add</button></a>
+                    <div className="form-group">
+                <label htmlFor="username">Upload a new session:</label> <input onChange={this.handlePicChange} type="file"/>
+
+                  <img src={this.state.preview} />
+              </div>
+
                   {/* // <button type="submit" className="btn btn-primary">Edit</button> */}
               </div>
       	    </section>
@@ -88,6 +94,8 @@ class UserAccount extends React.Component {
       )
     }
 };
+
+
 
 module.exports = {
 UserAccount

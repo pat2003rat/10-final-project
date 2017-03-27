@@ -6,11 +6,12 @@ var ScheduleModel = require('../models/schedulemodel.js').ScheduleModel;
 var ScheduleCollection = require('../models/schedulemodel.js').ScheduleCollection;
 var moment = require('moment');
 
+var scheduleCollection = new ScheduleCollection();
+var schedulemodel = new ScheduleModel();
+
 class ScheduleDetail extends React.Component {
   constructor(props) {
     super(props)
-    var scheduleCollection = new ScheduleCollection();
-    var schedulemodel = new ScheduleModel();
 
     this.deleteScheduleModel = this.deleteScheduleModel.bind(this);
 
@@ -20,16 +21,15 @@ class ScheduleDetail extends React.Component {
       this.setState({model: thisModel});
     })
     this.state = {
-      collection: scheduleCollection,
-      schedulemodel: schedulemodel
+      collection: scheduleCollection
     }
   }
-
-  deleteScheduleModel(){
-    this.state.schedulemodel.destroy()
-    this.setState({schedulemodel: this.state.schedulemodel});
+  deleteScheduleModel(e){
+    var objectId = this.state.model.get('objectId')
+    e.preventDefault()
+    this.state.model.destroy();
+    Backbone.history.navigate('userAccount/', { trigger: true} );
   }
-
   render() {
     return (
       <div>
@@ -38,10 +38,11 @@ class ScheduleDetail extends React.Component {
           <div className = "col-md-4 wellsessionform">
             <p>{this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm a') : ""}</p>
             <p>{this.state.model ? this.state.model.get('description') : ""}</p>
-              <a onClick={(e)=>{e.preventDefault().this.props.deleteScheduleModel()}} className="btn btn-danger">Delete Schedule</a>
+            <a onClick={(e) => {this.deleteScheduleModel(e)}} className="btn btn-danger">Delete Schedule</a>
           </div>
 
       <div className = "col-md-4">
+
       </div>
       <div className = "col-md-4">
         Weather
