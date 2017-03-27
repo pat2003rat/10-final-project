@@ -30,24 +30,15 @@ class UserAccount extends React.Component {
       var scheduleTime = schedule.get('time');
       var scheduleTimeNumber = Number(scheduleTime);
       var scheduleId = schedule.get('objectId')
-      // console.log('schedule time', scheduleTime);
-      // console.log('schedule time type', scheduleTimeNumber);
+
       return(
         <li key={schedule.cid}>
           <a href={"#scheduledetail/" + scheduleId }>{ moment(schedule.get('date').iso ).format('dddd, LL h:mm a')}</a>
-
-
           {/* {schedule.get('description')} */}
         </li>
-
       )
     })
-      //
-      // var scheduleModels = this.state.collection.map((scheduleModel) => {
-      //   return (
-      //     scheduleModel
-      //   )
-      // })
+
       return (
         <div className="container">
           <Header />
@@ -67,13 +58,12 @@ class UserAccount extends React.Component {
                     </div>
                   <a href="#scheduleform/"><button type="Add" className="btn btn-danger">Add</button></a>
                     <div className="form-group">
-                <label htmlFor="username">Upload a new session:</label> <input onChange={this.handlePicChange} type="file"/>
+                      <input type="file" accept=".jpeg, .jpg, .gif, .PNG" onChange={this.handleImageChange} /><br />
 
                   <img src={this.state.preview} />
-              </div>
-
+                    </div>
                   {/* // <button type="submit" className="btn btn-primary">Edit</button> */}
-              </div>
+                    </div>
       	    </section>
             <section id="middle">
               <div className="col-md-6 text-center">
@@ -84,18 +74,14 @@ class UserAccount extends React.Component {
                 <p>Temperature <span>{this.state.weather.get('temp_f')}</span></p>
                 <p>Relative Humidity <span>{this.state.weather.get('relative_humidity')}</span></p>
               </div>
-
             </section>
           <div className="col-md-5 text-center">
-
           </div>
         </div>
       </div>
       )
     }
 };
-
-
 
 module.exports = {
 UserAccount
