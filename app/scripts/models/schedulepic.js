@@ -5,17 +5,17 @@ var parse = require('../parse').parse;
 var ParseModel = require('../parse').ParseModel;
 var ParseCollection = require('../parse').ParseCollection;
 
-var ScheduleModel = ParseModel.extend({
+var SchedulePic = ParseModel.extend({
   idAttribute: 'objectId',
-  urlRoot: 'https://patrickratigan.herokuapp.com/classes/Schedule'
+  urlRoot: 'https://patrickratigan.herokuapp.com/classes/image'
 });
 
-var ScheduleCollection = ParseCollection.extend({
-  model: ScheduleModel,
-  baseUrl: 'https://patrickratigan.herokuapp.com/classes/Schedule'
+var SchedulePicCollection = ParseCollection.extend({
+  model: SchedulePic,
+  baseUrl: 'https://patrickratigan.herokuapp.com/classes/image'
 });
 
 module.exports = {
-  ScheduleModel,
-  ScheduleCollection
+  SchedulePicCollection,
+  SchedulePic
 };
