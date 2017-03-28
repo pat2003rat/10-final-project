@@ -7,6 +7,7 @@ var ScheduleCollection = require('../models/schedulemodel.js').ScheduleCollectio
 var moment = require('moment')
 var SchedulePicCollection = require('../models/schedulepic.js').SchedulePicCollection;
 var SchedulePic = require('../models/schedulepic.js').SchedulePic;
+var ParseFile = require('../parse').ParseFile;
 
 // var schedule = new Schedule;
 
@@ -30,7 +31,27 @@ class UserAccount extends React.Component {
       collection: scheduleCollection
     };
   }
+
+  deleteImage(objectId) {
+    schedulePicCollection.remove(objectId).then( (response) => {
+      console.log('remove image response', response);
+    })
+  }
+
   render(){
+
+    // var schedulePicCollection = new SchedulePicCollection();
+    // var schedulePics = schedulePicCollection.map( (schedulePic) => {
+    //   return (
+        // <div>
+        //   <h3>{schedulepic.get('name')}</h3>
+        //   <img src={schedulePic.get('pic').url} alt={schedulePic.get('pic').name}/>
+        //   <button onClick={ this.deleteImage( schedulePic.get('objectId')) }>Delete</button>
+        // </div>
+    //   )
+    // })
+
+
     var schedules = this.state.collection.map(function(schedule) {
       var scheduleTime = schedule.get('time');
       var scheduleTimeNumber = Number(scheduleTime);
@@ -92,15 +113,22 @@ class UploadForm extends React.Component{
     super(props);
 
     this.deleteSchedulePic = this.deleteSchedulePic.bind(this);
-
-
     this.handlePicChange = this.handlePicChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
 
     this.state = {
-      pic: null,
+      name: '',
+      pic: {
+        name: '',
+        url: ''
+      },
       preview: null
     };
+  }
+
+  handleNameChange(e) {
+    this.setState({ name: e.target.value });
   }
 
   deleteSchedulePic(e){
@@ -114,19 +142,17 @@ class UploadForm extends React.Component{
     var file = e.target.files[0];
     this.setState({pic: file});
     console.log(file);
-    // User file reader object to display preview
     var reader = new FileReader();
-    reader.onloadend = ()=>{
+    reader.onloadend = () => {
       this.setState({preview: reader.result});
     }
     reader.readAsDataURL(file);
   }
   handleSubmit(e){
     e.preventDefault();
-    //upload image
     var pic = this.state.pic;
-    var schedulePic = new SchedulePic(pic);
-    schedulePic.save({}, {
+    var fileUpload = new ParseFile(pic);
+    fileUpload.save({}, {
       data: pic
     }).then((response)=>{
       var imageUrl = response.url;
@@ -134,23 +160,29 @@ class UploadForm extends React.Component{
       schedulePic.set({
         name: this.state.name,
         pic: {
+          name: this.state.pic.name,
           url: imageUrl
         }
       });
-      schedulePic.save().then(function(){
+      schedulePic.save().then( (data) => {
+        console.log('returned data:', data);
+        console.log('model instandce:', schedulePic);
+        console.log('pic stuff:', schedulePic.get('pic'));
         // Backbone.history.navigate('detail/', {trigger: true});
       });
     });
 
   }
+
   render(){
     return (
       <div>
         <form onSubmit={this.handleSubmit} >
           <h1> Image </h1>
+          <input onChange={this.handleNameChange} type="text" placeholder="Picture Name"/>
           <input onChange={this.handlePicChange} type="file"/>
           <img src={this.state.preview} />
-          <input className="btn btn-danger" type="submit" value="Delete"/>
+          <input className="btn btn-danger" type="submit" value="Upload"/>
         </form>
       </div>
 
@@ -160,5 +192,4 @@ class UploadForm extends React.Component{
 
 module.exports = {
 UserAccount,
-UploadForm
 };

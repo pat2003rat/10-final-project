@@ -119,7 +119,7 @@ var ParseCollection = Backbone.Collection.extend({
 
 var ParseFile = ParseModel.extend({
   urlRoot: function(){
-    return 'https://patrickratigan.herokuapp.com/files' + this.get('name');
+    return 'https://patrickratigan.herokuapp.com/files/' + this.get('name');
   }
 });
 
