@@ -91,6 +91,9 @@ class UploadForm extends React.Component{
   constructor(props){
     super(props);
 
+    this.deleteSchedulePic = this.deleteSchedulePic.bind(this);
+
+
     this.handlePicChange = this.handlePicChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -98,6 +101,13 @@ class UploadForm extends React.Component{
       pic: null,
       preview: null
     };
+  }
+
+  deleteSchedulePic(e){
+    var objectId = this.state.model.get('objectId')
+    e.preventDefault()
+    this.state.model.destroy();
+    Backbone.history.navigate('userAccount/', { trigger: true} );
   }
 
   handlePicChange(e){
@@ -136,8 +146,8 @@ class UploadForm extends React.Component{
   render(){
     return (
       <div>
-        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
-          <h1>Upload Session via Image</h1>
+        <form onSubmit={this.handleSubmit} >
+          <h1> Image </h1>
           <input onChange={this.handlePicChange} type="file"/>
           <img src={this.state.preview} />
           <input className="btn btn-danger" type="submit" value="Delete"/>
