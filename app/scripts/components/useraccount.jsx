@@ -119,9 +119,7 @@ class UploadForm extends React.Component{
     schedulePic.save({}, {
       data: pic
     }).then((response)=>{
-    //get the image url from the server response
       var imageUrl = response.url;
-      // 3. we need to save our SchedulePic with the image url
       var schedulePic = new SchedulePic();
       schedulePic.set({
         name: this.state.name,
@@ -130,7 +128,6 @@ class UploadForm extends React.Component{
         }
       });
       schedulePic.save().then(function(){
-        console.log(SchedulePic);
         // Backbone.history.navigate('detail/', {trigger: true});
       });
     });
