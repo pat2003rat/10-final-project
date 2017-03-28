@@ -6,13 +6,13 @@ var Wunderground = Backbone.Model.extend({
 
   },
   sync: function(method, model, options){
-  options = options || {};
-  options.dataType = 'jsonp';
-  return Backbone.Model.prototype.sync.call(this, method, model, options);
-},
+    options = options || {};
+    options.dataType = 'jsonp';
+    return Backbone.Model.prototype.sync.call(this, method, model, options);
+  },
   parse: function(data){
-  return data.current_observation;
-}
+    return data.current_observation;
+  }
 });
 
  //for youtube need a collection

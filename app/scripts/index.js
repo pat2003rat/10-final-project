@@ -29,7 +29,7 @@ $.get({
     console.log(obj.snippet.title);
   });
   // Show the first object
-  data.items[0].snippet.title;
+  // data.items[0].snippet.title;
   // Show the first 5
   for (var i = 0; i < 5; i++) {
     console.log(data.items[i].id.videoId);
