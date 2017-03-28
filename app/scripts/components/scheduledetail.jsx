@@ -25,10 +25,11 @@ class ScheduleDetail extends React.Component {
     }
   }
   deleteScheduleModel(e){
-    var objectId = this.state.model.get('objectId')
-    e.preventDefault()
-    this.state.model.destroy();
-    Backbone.history.navigate('userAccount/', { trigger: true} );
+    e.preventDefault();
+    var model = this.state.model;
+    model.destroy().then(()=>{
+      Backbone.history.navigate('userAccount/', { trigger: true} );
+    });
   }
   render() {
     return (

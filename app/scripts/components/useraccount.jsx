@@ -15,55 +15,49 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    // weather.fetch().then(()=>{
-    //   console.log(this.state.weather);
-    //   this.setState({weather})
-    // })
-    var schedulePicCollection = new SchedulePicCollection();
+    weather.fetch().then(()=>{
+      console.log(this.state.weather);
+      this.setState({weather})
+    })
+    // var schedulePicCollection = new SchedulePicCollection();
 
 
     var scheduleCollection = new ScheduleCollection();
     scheduleCollection.fetch().then(() => {
-      this.setState({collection: scheduleCollection});
-    })
+      this.setState({ scheduleCollection });
+    });
+
+
     this.state = {
       weather: weather,
-      collection: scheduleCollection
-    };
-  }
+      scheduleCollection
 
-  deleteImage(objectId) {
-    schedulePicCollection.remove(objectId).then( (response) => {
-      console.log('remove image response', response);
-    })
+    };
   }
 
   render(){
 
-    // var schedulePicCollection = new SchedulePicCollection();
-    // var schedulePics = schedulePicCollection.map( (schedulePic) => {
-    //   return (
-        // <div>
-        //   <h3>{schedulepic.get('name')}</h3>
-        //   <img src={schedulePic.get('pic').url} alt={schedulePic.get('pic').name}/>
-        //   <button onClick={ this.deleteImage( schedulePic.get('objectId')) }>Delete</button>
-        // </div>
-    //   )
-    // })
-
-
-    var schedules = this.state.collection.map(function(schedule) {
-      var scheduleTime = schedule.get('time');
-      var scheduleTimeNumber = Number(scheduleTime);
-      var scheduleId = schedule.get('objectId')
-
-      return(
-        <li key={schedule.cid}>
-          <a href={"#scheduledetail/" + scheduleId }>{ moment(schedule.get('date').iso ).format('dddd, LL h:mm a')}</a>
-          {/* {schedule.get('description')} */}
-        </li>
+    var schedulePicCollection = new SchedulePicCollection();
+    var schedulePics = schedulePicCollection.map( (schedulePic) => {
+      return (
+        <div>
+          <h3>{schedulepic.get('name')}</h3>
+          <img src={schedulePic.get('pic').url} alt={schedulePic.get('pic').name}/>
+          <button onClick={ this.deleteImage( schedulePic.get('objectId')) }>Delete</button>
+        </div>
       )
     })
+
+
+    var scheduleCollection = this.state.scheduleCollection;
+    var schedules = scheduleCollection.map((schedule) => {
+
+        return(
+          <li key={schedule.cid}>
+            <a href={"#scheduledetail/" + schedule.get('objectId') }>{ moment(schedule.get('date').iso ).format('dddd, LL h:mm a')}</a>
+          </li>
+      )
+    });
 
       return (
         <div className="container">
@@ -85,6 +79,8 @@ class UserAccount extends React.Component {
                   <a href="#scheduleform/"><button type="Add" className="btn btn-danger">Add Session</button></a>
                     <div className="form-group">
                   <img src={this.state.preview} />
+                    <UploadForm />
+
                     </div>
                   {/* // <button type="submit" className="btn btn-primary">Edit</button> */}
                     </div>
@@ -101,7 +97,6 @@ class UserAccount extends React.Component {
             </section>
           <div className="col-md-5 text-center">
           </div>
-        <UploadForm />
         </div>
       </div>
       )
@@ -112,10 +107,7 @@ class UploadForm extends React.Component{
   constructor(props){
     super(props);
 
-    this.deleteSchedulePic = this.deleteSchedulePic.bind(this);
-    this.handlePicChange = this.handlePicChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleNameChange = this.handleNameChange.bind(this);
+    var schedulePicCollection = new SchedulePicCollection();
 
     this.state = {
       name: '',
@@ -123,25 +115,47 @@ class UploadForm extends React.Component{
         name: '',
         url: ''
       },
-      preview: null
+      preview: null,
+      schedulePicCollection
     };
+
+    schedulePicCollection.fetch().then(()=> {
+      this.setState({ schedulePicCollection })
+    });
+
+    this.deleteImage = this.deleteImage.bind(this);
+    this.deleteSchedulePic = this.deleteSchedulePic.bind(this);
+    this.handlePicChange = this.handlePicChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+  }
+
+  componentDidMount() {
+
+  }
+
+  deleteImage(objectId) {
+    schedulePicCollection.remove(objectId).then( (response) => {
+      console.log('remove image response', response);
+    })
   }
 
   handleNameChange(e) {
     this.setState({ name: e.target.value });
   }
 
-  deleteSchedulePic(e){
-    var objectId = this.state.model.get('objectId')
-    e.preventDefault()
-    this.state.model.destroy();
-    Backbone.history.navigate('userAccount/', { trigger: true} );
+  deleteSchedulePic(model){
+    console.log(this.state);
+    var schedulePicCollection = this.state.schedulePicCollection;
+    schedulePicCollection.remove(model);
+    this.setState({ schedulePicCollection })
+    model.destroy();
   }
 
   handlePicChange(e){
     var file = e.target.files[0];
     this.setState({pic: file});
-    console.log(file);
+
     var reader = new FileReader();
     reader.onloadend = () => {
       this.setState({preview: reader.result});
@@ -164,28 +178,40 @@ class UploadForm extends React.Component{
           url: imageUrl
         }
       });
-      schedulePic.save().then( (data) => {
-        console.log('returned data:', data);
-        console.log('model instandce:', schedulePic);
-        console.log('pic stuff:', schedulePic.get('pic'));
-        // Backbone.history.navigate('detail/', {trigger: true});
+      schedulePic.save().then( () => {
+        var schedulePicCollection = this.state.schedulePicCollection;
+        schedulePicCollection.add(schedulePic);
+        this.setState({ schedulePicCollection });
       });
     });
-
   }
 
   render(){
+    var images = this.state.schedulePicCollection.map((image)=>{
+      return (
+        <div key={image.cid}>
+          <h3>{image.get('name')}</h3>
+          <img src={image.get('pic').url} />
+          <a onClick={(e) => {this.deleteSchedulePic(image)}} className="btn btn-info">Delete Image</a>
+        </div>
+
+      )
+    });
     return (
       <div>
+        <div className = "col-md-">
         <form onSubmit={this.handleSubmit} >
-          <h1> Image </h1>
-          <input onChange={this.handleNameChange} type="text" placeholder="Picture Name"/>
+          <h1> Schedule uploads </h1>
+          <input onChange={this.handleNameChange} value={this.state.name} type="text" placeholder="Picture Name"/>
           <input onChange={this.handlePicChange} type="file"/>
+
+
           <img src={this.state.preview} />
           <input className="btn btn-danger" type="submit" value="Upload"/>
+          { images }
         </form>
+        </div>
       </div>
-
     )
   }
 }
