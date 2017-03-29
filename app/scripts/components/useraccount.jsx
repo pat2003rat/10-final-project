@@ -15,10 +15,10 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    // weather.fetch().then(()=>{
-    //   console.log(this.state.weather);
-    //   this.setState({weather})
-    // })
+    weather.fetch().then(()=>{
+      console.log(this.state.weather);
+      this.setState({weather})
+    })
     // var schedulePicCollection = new SchedulePicCollection();
 
 
@@ -181,7 +181,7 @@ class UploadForm extends React.Component{
       schedulePic.save().then( () => {
         var schedulePicCollection = this.state.schedulePicCollection;
         schedulePicCollection.add(schedulePic);
-        this.setState({ schedulePicCollection });
+        this.setState({ schedulePicCollection: schedulePicCollection, preview: null });
       });
     });
   }
@@ -204,7 +204,11 @@ class UploadForm extends React.Component{
           <input onChange={this.handleNameChange} value={this.state.name} type="text" placeholder="Picture Name"/>
           <input onChange={this.handlePicChange} type="file"/>
 
-
+          { this.state.preview ? (
+            <img src={this.state.preview} />
+          ) : (
+            <span></span>
+          )}
           <img src={this.state.preview} />
           <input className="btn btn-danger" type="submit" value="Upload"/>
           { images }

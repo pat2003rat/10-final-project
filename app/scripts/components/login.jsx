@@ -14,7 +14,7 @@ class Login extends React.Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
     };
   }
 
@@ -80,10 +80,12 @@ class SignUp extends React.Component {
     this.handleUsername= this.handleUsername.bind(this);
     this.handlePassword= this.handlePassword.bind(this);
     this.handleSignup= this.handleSignup.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
     };
   }
 
@@ -93,6 +95,10 @@ class SignUp extends React.Component {
 
   handlePassword(e) {
     this.setState({password: e.target.value});
+  }
+
+  handleNameChange(e){
+    this.setState({name: e.target.value});
   }
 
   handleSignup(e){
@@ -121,6 +127,7 @@ class SignUp extends React.Component {
               <label htmlFor="email">Password</label>
               <input onChange={this.handlePassword} id="signup-password" className="form-control" type="password" name="password" placeholder="Password" required/>
             </div>
+            
             <input className="btn btn-danger" type="submit" value="Sign Me Up!"/>
           </form>
          </div>

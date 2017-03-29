@@ -15,6 +15,8 @@ class Header extends React.Component {
 
   render(){
     var user = new User();
+    var current = User.current();
+    console.log('hey',current)
     return(
       <div className="container">
         <div className="row">
