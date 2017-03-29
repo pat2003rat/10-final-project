@@ -38,7 +38,6 @@ class Header extends React.Component {
     Backbone.history.navigate('', {trigger: true });
   }
 
-
   render(){
     var user = new User();
     return(
@@ -48,7 +47,7 @@ class Header extends React.Component {
             React.createElement("img", {className: "logo", src: "./images/logo.png"}), 
               React.createElement("span", {className: "links", onClick: this.logout}, "Log Out"), 
               React.createElement("span", {className: "links"}, React.createElement("a", {href: "#scheduleform/"}, "Create A Schedule")), 
-              React.createElement("span", {className: "links"}, React.createElement("a", {href: "#userAccount/"}, user.get('name') + "'s", " Account"))
+              React.createElement("span", {className: "links"}, React.createElement("a", {href: "#userAccount/"}, user.get('username') + "'s", " Account"))
           )
         )
       )
@@ -128,10 +127,7 @@ class Login extends React.Component {
             React.createElement("div", {className: "col-md-4 juggler"}, 
               React.createElement("img", {className: "splashimage", src: "./images/splash1.gif"})
             ), 
-
-
             React.createElement(SignUp, null)
-
           )
           )
         )
@@ -221,6 +217,7 @@ class ScheduleDetail extends React.Component {
     this.deleteScheduleModel = this.deleteScheduleModel.bind(this);
     this.editScheduleModel = this.editScheduleModel.bind(this);
     this.editMode = this.editMode.bind(this);
+    this.setDescription = this.setDescription.bind(this);
 
     scheduleCollection.fetch().then(() => {
       var thisModel = scheduleCollection.get(this.props.scheduleId);
@@ -229,7 +226,8 @@ class ScheduleDetail extends React.Component {
     })
     this.state = {
       collection: scheduleCollection,
-      isEditing: false
+      isEditing: false,
+      description: ''
     }
   }
   deleteScheduleModel(e){
@@ -244,7 +242,8 @@ class ScheduleDetail extends React.Component {
     e.preventDefault();
     var model = this.state.model;
     model.save().then(()=>{
-      Backbone.history.navigate('#scheduleform/', { trigger: true} );
+      this.setState({model})
+      Backbone.history.navigate('#userAccount/', { trigger: true} );
     });
   }
 
@@ -257,24 +256,17 @@ class ScheduleDetail extends React.Component {
   }
 
   setDate(e) {
-    // get value
-    // set this.state.date with the value
-    this.setState({Date: e.target.value});
-
+    this.setState({'date': e.target.value});
   }
 
   setDescription(e) {
-    // get value
-    // set this.state.description with the value
-    this.setState({description: e.target.value});
-
+    var model = this.state.model;
+    model.set({description: e.target.value})
+    this.setState({model});
   }
 
-  handleTime(e) {
+  setTime(e) {
     this.setState({time: e.target.value});
-  }
-
-  handleDescription(e) {
   }
 
   render() {
@@ -284,7 +276,7 @@ class ScheduleDetail extends React.Component {
         React.createElement("div", {className: "col-md-12"}, 
            this.state.isEditing ? (
             React.createElement("div", {className: "col-md-4 wellsessionform"}, 
-              React.createElement("input", {type: "date", value: this.state.model ? moment( this.state.model.get('date').iso ).format('yyyy-MM-dd') : "", onChange: this.setDate}), 
+              React.createElement("input", {type: "date", value: this.state.model ? moment( this.state.model.get('date').iso ).format('yyyy-MM-dd, h:mm a') : "", onChange: this.setDate}), 
               React.createElement("input", {type: "text", value: this.state.model ? this.state.model.get('description') : "", onChange: this.setDescription}), 
               React.createElement("a", {onClick: (e) => {this.editScheduleModel(e)}, className: "btn btn-danger"}, "Save Edit"), 
               React.createElement("a", {onClick: this.editMode, className: "btn btn-danger"}, "Cancel Edit")
@@ -403,21 +395,9 @@ class ScheduleForm extends React.Component {
 
             ), 
             React.createElement("div", {className: "form-group"}, 
-              React.createElement("label", {htmlFor: "select", className: "col-md-6"}), 
-              React.createElement("select", {className: "form-control", id: "videos"}, 
-
-                React.createElement("option", null, "Goalkeeping"), 
-                React.createElement("option", null, "Finishing"), 
-                React.createElement("option", null, "Fitness"), 
-                React.createElement("option", null, "Defending"), 
-                React.createElement("option", null, "Set Pieces")
-              )
-            ), 
-            React.createElement("div", {className: "form-group"}, 
               React.createElement("div", {className: "col-md-6"}, 
-                React.createElement("button", {type: "cancel", className: "btn btn-primary"}, " Cancel "), 
-                React.createElement("button", {type: "clear", className: "btn btn-warning"}, " Clear Form "), 
-                React.createElement("button", {type: "submit", className: "btn btn-danger"}, " Submit ")
+                React.createElement("button", {type: "submit", className: "btn btn-danger"}, " Submit "), 
+                React.createElement("button", {type: "cancel", className: "btn btn-primary"}, " Cancel Create Session ")
               )
             )
               )
@@ -446,7 +426,7 @@ class Splash extends React.Component {
         React.createElement("div", {className: "col-md-4 "}
         ), 
         React.createElement("div", {className: "col-md-4 "}, 
-        React.createElement("span", null, React.createElement("h1", null, "Be your own", React.createElement("img", {src: "./images/logo.png"})))
+        React.createElement("span", null, React.createElement("h1", null, "Be your own", React.createElement("img", {className: "logo", src: "./images/logo.png"})))
         ), 
 
         React.createElement("div", {className: "col-md-4 "}
