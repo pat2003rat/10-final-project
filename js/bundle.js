@@ -40,6 +40,8 @@ class Header extends React.Component {
 
   render(){
     var user = new User();
+    var current = User.current();
+    console.log('hey',current)
     return(
       React.createElement("div", {className: "container"}, 
         React.createElement("div", {className: "row"}, 
@@ -77,7 +79,7 @@ class Login extends React.Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
     };
   }
 
@@ -143,10 +145,12 @@ class SignUp extends React.Component {
     this.handleUsername= this.handleUsername.bind(this);
     this.handlePassword= this.handlePassword.bind(this);
     this.handleSignup= this.handleSignup.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
     };
   }
 
@@ -156,6 +160,10 @@ class SignUp extends React.Component {
 
   handlePassword(e) {
     this.setState({password: e.target.value});
+  }
+
+  handleNameChange(e){
+    this.setState({name: e.target.value});
   }
 
   handleSignup(e){
@@ -184,6 +192,7 @@ class SignUp extends React.Component {
               React.createElement("label", {htmlFor: "email"}, "Password"), 
               React.createElement("input", {onChange: this.handlePassword, id: "signup-password", className: "form-control", type: "password", name: "password", placeholder: "Password", required: true})
             ), 
+            
             React.createElement("input", {className: "btn btn-danger", type: "submit", value: "Sign Me Up!"})
           )
          )
@@ -278,7 +287,7 @@ class ScheduleDetail extends React.Component {
             React.createElement("div", {className: "col-md-4 wellsessionform"}, 
               React.createElement("input", {type: "date", value: this.state.model ? moment( this.state.model.get('date').iso ).format('yyyy-MM-dd, h:mm a') : "", onChange: this.setDate}), 
               React.createElement("input", {type: "text", value: this.state.model ? this.state.model.get('description') : "", onChange: this.setDescription}), 
-              React.createElement("a", {onClick: (e) => {this.editScheduleModel(e)}, className: "btn btn-danger"}, "Save Edit"), 
+              React.createElement("a", {onClick: (e) => {this.editScheduleModel(e)}, className: "btn btn-info"}, "Save Edit"), 
               React.createElement("a", {onClick: this.editMode, className: "btn btn-danger"}, "Cancel Edit")
             )
           ) : (
@@ -286,8 +295,8 @@ class ScheduleDetail extends React.Component {
               React.createElement("p", null, this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm a') : ""), 
               React.createElement("p", null, this.state.model ? this.state.model.get('description') : ""), 
               React.createElement("a", {onClick: (e) => {this.deleteScheduleModel(e)}, className: "btn btn-danger"}, "Delete Schedule"), 
-              React.createElement("a", {onClick: this.editMode, className: "btn btn-danger"}, "Edit Schedule"), 
-              React.createElement("a", {href: "#userAccount/"}, React.createElement("button", {type: "Cancel", className: "btn btn-danger"}, "Cancel"))
+              React.createElement("a", {onClick: this.editMode, className: "btn btn-info"}, "Edit Schedule"), 
+              React.createElement("a", {href: "#userAccount/"}, React.createElement("button", {type: "Cancel", className: "btn btn-primary"}, "Cancel"))
 
             )
           )
@@ -494,10 +503,10 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    // weather.fetch().then(()=>{
-    //   console.log(this.state.weather);
-    //   this.setState({weather})
-    // })
+    weather.fetch().then(()=>{
+      console.log(this.state.weather);
+      this.setState({weather})
+    })
     // var schedulePicCollection = new SchedulePicCollection();
 
 
@@ -660,7 +669,7 @@ class UploadForm extends React.Component{
       schedulePic.save().then( () => {
         var schedulePicCollection = this.state.schedulePicCollection;
         schedulePicCollection.add(schedulePic);
-        this.setState({ schedulePicCollection });
+        this.setState({ schedulePicCollection: schedulePicCollection, preview: null });
       });
     });
   }
@@ -683,7 +692,11 @@ class UploadForm extends React.Component{
           React.createElement("input", {onChange: this.handleNameChange, value: this.state.name, type: "text", placeholder: "Picture Name"}), 
           React.createElement("input", {onChange: this.handlePicChange, type: "file"}), 
 
-
+           this.state.preview ? (
+            React.createElement("img", {src: this.state.preview})
+          ) : (
+            React.createElement("span", null)
+          ), 
           React.createElement("img", {src: this.state.preview}), 
           React.createElement("input", {className: "btn btn-danger", type: "submit", value: "Upload"}), 
            images 
@@ -855,7 +868,7 @@ var Backbone = require('backbone');
 
 var Wunderground = Backbone.Model.extend({
   urlRoot: function(){
-    // return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
+    return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
 
   },
   sync: function(method, model, options){
