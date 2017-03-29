@@ -16,6 +16,7 @@ class ScheduleDetail extends React.Component {
     this.deleteScheduleModel = this.deleteScheduleModel.bind(this);
     this.editScheduleModel = this.editScheduleModel.bind(this);
     this.editMode = this.editMode.bind(this);
+    this.setDescription = this.setDescription.bind(this);
 
     scheduleCollection.fetch().then(() => {
       var thisModel = scheduleCollection.get(this.props.scheduleId);
@@ -24,7 +25,8 @@ class ScheduleDetail extends React.Component {
     })
     this.state = {
       collection: scheduleCollection,
-      isEditing: false
+      isEditing: false,
+      description: ''
     }
   }
   deleteScheduleModel(e){
@@ -39,7 +41,8 @@ class ScheduleDetail extends React.Component {
     e.preventDefault();
     var model = this.state.model;
     model.save().then(()=>{
-      Backbone.history.navigate('#scheduleform/', { trigger: true} );
+      this.setState({model})
+      Backbone.history.navigate('#userAccount/', { trigger: true} );
     });
   }
 
@@ -52,13 +55,17 @@ class ScheduleDetail extends React.Component {
   }
 
   setDate(e) {
-    // get value
-    // set this.state.date with the value
+    this.setState({'date': e.target.value});
   }
 
   setDescription(e) {
-    // get value
-    // set this.state.description with the value
+    var model = this.state.model;
+    model.set({description: e.target.value})
+    this.setState({model});
+  }
+
+  setTime(e) {
+    this.setState({time: e.target.value});
   }
 
   render() {
@@ -68,7 +75,7 @@ class ScheduleDetail extends React.Component {
         <div className = "col-md-12">
           { this.state.isEditing ? (
             <div className = "col-md-4 wellsessionform">
-              <input type="date" value={this.state.model ? moment( this.state.model.get('date').iso ).format('yyyy-MM-dd') : ""} onChange={this.setDate}></input>
+              <input type="date" value={this.state.model ? moment( this.state.model.get('date').iso ).format('yyyy-MM-dd, h:mm a') : ""} onChange={this.setDate}></input>
               <input type="text" value={this.state.model ? this.state.model.get('description') : ""} onChange={this.setDescription}></input>
               <a onClick={(e) => {this.editScheduleModel(e)}} className="btn btn-danger">Save Edit</a>
               <a onClick={this.editMode} className="btn btn-danger">Cancel Edit</a>

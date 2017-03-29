@@ -10,7 +10,7 @@ class Splash extends React.Component {
         <div className="col-md-4 ">
         </div>
         <div className="col-md-4 ">
-        <span><h1>Be your own<img src="./images/logo.png"></img></h1></span>
+        <span><h1>Be your own<img className="logo" src="./images/logo.png"></img></h1></span>
         </div>
 
         <div className="col-md-4 ">
