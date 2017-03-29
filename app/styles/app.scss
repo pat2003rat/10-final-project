@@ -48,7 +48,7 @@ padding-left: 170px
   padding-left: 17px;
 }
 .wellsessionform {
-  height: 70px;
+  height: 20px;
   background-color: #32CD32;
   position: relative;
 };
@@ -58,7 +58,8 @@ padding-left: 170px
 }
 
 .well {
-background-color: #C0C0C0;
+  height: 25px;
+  margin-top: 30px;
 }
 
 .containerjumbotron {
@@ -86,8 +87,17 @@ p {
   margin-top: 200px;
 }
 
+.logo {
+  height: 100px;
+  background-color: white;
+}
 
 .form-vertical{
   position: absolute;
   padding-right: 100px;
+}
+
+h1 {
+  font-weight: bold;
+
 }

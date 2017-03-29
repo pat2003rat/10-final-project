@@ -15,10 +15,10 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    weather.fetch().then(()=>{
-      console.log(this.state.weather);
-      this.setState({weather})
-    })
+    // weather.fetch().then(()=>{
+    //   console.log(this.state.weather);
+    //   this.setState({weather})
+    // })
     // var schedulePicCollection = new SchedulePicCollection();
 
 
@@ -87,7 +87,7 @@ class UserAccount extends React.Component {
       	    </section>
             <section id="middle">
               <div className="col-md-6 text-center">
-                <h2>Today's Weather</h2>
+                <h1>Today's Weather</h1>
                 <span><a href={this.state.weather.get('ob_url')}>Forecast</a></span>
                 <br></br>
                   <span><img src={this.state.weather.get('icon_url')}/></span>
@@ -187,21 +187,20 @@ class UploadForm extends React.Component{
   }
 
   render(){
-    var images = this.state.schedulePicCollection.map((image)=>{
+    var images =this.state.schedulePicCollection.map((image)=>{
       return (
         <div key={image.cid}>
           <h3>{image.get('name')}</h3>
-          <img src={image.get('pic').url} />
+          <a href={image.get('pic').url}><img src={image.get('pic').url} /></a>
           <a onClick={(e) => {this.deleteSchedulePic(image)}} className="btn btn-info">Delete Image</a>
         </div>
-
       )
     });
     return (
       <div>
         <div className = "col-md-">
         <form onSubmit={this.handleSubmit} >
-          <h1> Schedule uploads </h1>
+          <h2> Schedule uploads </h2>
           <input onChange={this.handleNameChange} value={this.state.name} type="text" placeholder="Picture Name"/>
           <input onChange={this.handlePicChange} type="file"/>
 

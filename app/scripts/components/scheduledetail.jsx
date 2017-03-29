@@ -14,6 +14,8 @@ class ScheduleDetail extends React.Component {
     super(props)
 
     this.deleteScheduleModel = this.deleteScheduleModel.bind(this);
+    this.editScheduleModel = this.editScheduleModel.bind(this);
+    this.editMode = this.editMode.bind(this);
 
     scheduleCollection.fetch().then(() => {
       var thisModel = scheduleCollection.get(this.props.scheduleId);
@@ -21,7 +23,8 @@ class ScheduleDetail extends React.Component {
       this.setState({model: thisModel});
     })
     this.state = {
-      collection: scheduleCollection
+      collection: scheduleCollection,
+      isEditing: false
     }
   }
   deleteScheduleModel(e){
@@ -31,25 +34,57 @@ class ScheduleDetail extends React.Component {
       Backbone.history.navigate('userAccount/', { trigger: true} );
     });
   }
+
+  editScheduleModel(e){
+    e.preventDefault();
+    var model = this.state.model;
+    model.save().then(()=>{
+      Backbone.history.navigate('#scheduleform/', { trigger: true} );
+    });
+  }
+
+  editMode() {
+    if (this.state.isEditing === true) {
+      this.setState({isEditing: false});
+    } else {
+      this.setState({isEditing: true});
+    }
+  }
+
+  setDate(e) {
+    // get value
+    // set this.state.date with the value
+  }
+
+  setDescription(e) {
+    // get value
+    // set this.state.description with the value
+  }
+
   render() {
     return (
       <div>
         <Header />
         <div className = "col-md-12">
-          <div className = "col-md-4 wellsessionform">
-            <p>{this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm a') : ""}</p>
-            <p>{this.state.model ? this.state.model.get('description') : ""}</p>
-            <a onClick={(e) => {this.deleteScheduleModel(e)}} className="btn btn-danger">Delete Schedule</a>
-          </div>
+          { this.state.isEditing ? (
+            <div className = "col-md-4 wellsessionform">
+              <input type="date" value={this.state.model ? moment( this.state.model.get('date').iso ).format('yyyy-MM-dd') : ""} onChange={this.setDate}></input>
+              <input type="text" value={this.state.model ? this.state.model.get('description') : ""} onChange={this.setDescription}></input>
+              <a onClick={(e) => {this.editScheduleModel(e)}} className="btn btn-danger">Save Edit</a>
+              <a onClick={this.editMode} className="btn btn-danger">Cancel Edit</a>
+            </div>
+          ) : (
+            <div className = "col-md-4 wellsessionform">
+              <p>{this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm a') : ""}</p>
+              <p>{this.state.model ? this.state.model.get('description') : ""}</p>
+              <a onClick={(e) => {this.deleteScheduleModel(e)}} className="btn btn-danger">Delete Schedule</a>
+              <a onClick={this.editMode} className="btn btn-danger">Edit Schedule</a>
+              <a href="#userAccount/"><button type="Cancel" className="btn btn-danger">Cancel</button></a>
 
-      <div className = "col-md-4">
-
+            </div>
+          )}
+        </div>
       </div>
-      <div className = "col-md-4">
-        Weather
-      </div>
-    </div>
-    </div>
     )
   }
 }
