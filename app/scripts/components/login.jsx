@@ -44,7 +44,6 @@ class Login extends React.Component {
         </div>
 
         <div className="container">
-          <div className="row">
             <div className="col-md-12 login">
             <div className="col-md-4">
               <h1>Please Login</h1>
@@ -53,7 +52,7 @@ class Login extends React.Component {
                   <label htmlFor="email-login">Email address</label>
                   <input onChange={this.handleUsername} value={this.state.username} className="form-control" name="email" id="email-login" type="email" placeholder="Email"/>
                 </div>
-                <div className="form-group">
+                <div className="form-group moveup">
                   <label htmlFor="password-login">Password</label>
                   <input onChange={this.handlePassword} value={this.state.password} className="form-control" name="password" id="password-login" type="password" placeholder="Password"/>
                 </div>
@@ -65,7 +64,6 @@ class Login extends React.Component {
               <img className="splashimage" src="./images/splash1.gif"></img>
             </div>
             <SignUp />
-          </div>
           </div>
         </div>
       </div>
@@ -116,7 +114,8 @@ class SignUp extends React.Component {
   render() {
     return (
       <div>
-        <div className="col-md-4">
+            <div className="col-xs-12 col-md-4 moveup">
+
           <h1>Sign Up!</h1 >
           <form onSubmit={this.handleSignup} id="signup">
             <div className="form-group">

@@ -70,7 +70,7 @@ class ScheduleForm extends React.Component {
           <div className = "clipboardpositioning-fluid">
             <div className = "row">
 
-            <div className = "col-md-6">
+            <div className = "col-xs-12 col-md-6">
               <form className="form-vertical" onSubmit={this.handleScheduleForm}>
                 <h1>Training Report</h1>
                 <br></br>
@@ -94,7 +94,7 @@ class ScheduleForm extends React.Component {
           </div>
 
             <div className="form-group">
-              <div className="col-md-6">
+              <div className="col-xs-12 col-md-6">
                 <button type="submit" className="btn btn-danger"> Submit </button>
                 <button type="cancel" className="btn btn-primary"> Cancel Create Session </button>
               </div>
