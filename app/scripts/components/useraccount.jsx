@@ -61,11 +61,12 @@ class UserAccount extends React.Component {
           <div className="title text-center">
           </div>
           <div id="pagewrap">
+            <div className = "row">
             <header>
       		    <h2>Welcome to your Training Schedule</h2>
       	    </header>
       	    <section id="content">
-              <div className="col-md-6">
+              <div className="col-xs-12 col-md-6">
       		      <h2>Schedule</h2>
                     <div className="wellSessions">
                       <ul className="schedulelisting">
@@ -81,17 +82,18 @@ class UserAccount extends React.Component {
                   {/* // <button type="submit" className="btn btn-primary">Edit</button> */}
                     </div>
       	    </section>
+            <div className="col-xs-12 col-md-6">
+
             <section id="middle">
-              <div className="col-md-6 text-center">
                 <h1>Today's Weather</h1>
                 <span><a href={this.state.weather.get('ob_url')}>Forecast</a></span>
                 <br></br>
                   <span><img src={this.state.weather.get('icon_url')}/></span>
                 <p>Temperature <span>{this.state.weather.get('temp_f')}</span></p>
                 <p>Relative Humidity <span>{this.state.weather.get('relative_humidity')}</span></p>
-              </div>
             </section>
-
+          </div>
+        </div>
         </div>
       </div>
       )

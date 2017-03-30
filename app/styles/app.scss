@@ -84,9 +84,6 @@ padding-top: 50px;
   list-style-type: square;
 }
 
-p {
-  background-color: #FFA500;
-}
 
 .login {
   margin-top: 200px;
@@ -97,12 +94,28 @@ p {
   background-color: white;
 }
 
-
-
 h1 {
   font-weight: bold;
 }
 
-.formgroup{
-  position: sticky;
+.form-group{
+padding: 25px;
+}
+
+.datescheduleform {
+  position: relative;
+  top: -25px;
+  left: 13vw;
+}
+
+.timescheduleform {
+  position: relative;
+  top: -4vh;
+  left: 13vw;
+}
+
+.trainingdescriptionscheduleform {
+  position: relative;
+  top: -4vh;
+  left: 13vw;
 }

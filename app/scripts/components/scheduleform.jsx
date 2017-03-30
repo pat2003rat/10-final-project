@@ -68,23 +68,30 @@ class ScheduleForm extends React.Component {
           <Header />
           <img className="clipboard" src="./images/clipboard.png" alt="" />
           <div className = "clipboardpositioning-fluid">
+            <div className = "row">
 
             <div className = "col-md-6">
               <form className="form-vertical" onSubmit={this.handleScheduleForm}>
                 <h1>Training Report</h1>
                 <br></br>
                 <div className="form-group">
-                <label htmlFor="input" className="col-md-6">Date</label>
+                  <div className = "col-xs-12 col-md-8" >
+                <label htmlFor="input" className="col-md-6 datescheduleform">Date</label>
                 <input onChange={this.handleDate} id="inputDate" placeholder="Date" type="date"/>
               </div>
+              </div>
             <div className="form-group">
-              <label htmlFor="inputTime" className="col-md-6">Time</label>
+              <div className = "col-xs-12 col-md-8" >
+              <label htmlFor="inputTime" className="col-md-6 timescheduleform">Time</label>
               <input onChange={this.handleTime} id="inputTime" placeholder="Time" type="time"/>
             </div>
+          </div>
             <div className="form-group">
-              <label htmlFor="textArea" className="col-md-6">Training Description</label>
-              <textarea onChange={this.handleDescription} rows="3" id="inputDescription" placeholder="Training breakdown here"></textarea>
+              <div className = "col-xs-12 col-md-8" >
+              <label htmlFor="textArea" className="col-md-6 trainingdescriptionscheduleform">Training Description</label>
+              <textarea onChange={this.handleDescription} rows="9" id="inputDescription" placeholder="Training breakdown here"></textarea>
             </div>
+          </div>
 
             <div className="form-group">
               <div className="col-md-6">
@@ -93,6 +100,7 @@ class ScheduleForm extends React.Component {
               </div>
             </div>
               </form>
+            </div>
         </div>
       </div>
     </div>
