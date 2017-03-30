@@ -18,7 +18,7 @@ class Header extends React.Component {
     var current = User.current();
     console.log('hey',current)
     return(
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="well">
             <img className="logo" src="./images/logo.png" ></img>

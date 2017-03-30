@@ -64,12 +64,12 @@ class ScheduleForm extends React.Component {
 
   render() {
       return (
-        <div className="container">
+        <div className="container-fluid">
           <Header />
           <img className="clipboard" src="./images/clipboard.png" alt="" />
-          <div className = "clipboardpositioning">
+          <div className = "clipboardpositioning-fluid">
 
-            <div className = "col-md-5">
+            <div className = "col-md-6">
               <form className="form-vertical" onSubmit={this.handleScheduleForm}>
                 <h1>Training Report</h1>
                 <br></br>
@@ -85,10 +85,7 @@ class ScheduleForm extends React.Component {
               <label htmlFor="textArea" className="col-md-6">Training Description</label>
               <textarea onChange={this.handleDescription} rows="3" id="inputDescription" placeholder="Training breakdown here"></textarea>
             </div>
-            <div className="form-group">
-              <label className="col-md-6">Videos</label>
 
-            </div>
             <div className="form-group">
               <div className="col-md-6">
                 <button type="submit" className="btn btn-danger"> Submit </button>

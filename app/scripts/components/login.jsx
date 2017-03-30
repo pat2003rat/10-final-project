@@ -127,7 +127,7 @@ class SignUp extends React.Component {
               <label htmlFor="email">Password</label>
               <input onChange={this.handlePassword} id="signup-password" className="form-control" type="password" name="password" placeholder="Password" required/>
             </div>
-            
+
             <input className="btn btn-danger" type="submit" value="Sign Me Up!"/>
           </form>
          </div>

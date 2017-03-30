@@ -15,18 +15,15 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    weather.fetch().then(()=>{
-      console.log(this.state.weather);
-      this.setState({weather})
-    })
-    // var schedulePicCollection = new SchedulePicCollection();
-
+    // weather.fetch().then(()=>{
+    //   console.log(this.state.weather);
+    //   this.setState({weather})
+    // })
 
     var scheduleCollection = new ScheduleCollection();
     scheduleCollection.fetch().then(() => {
       this.setState({ scheduleCollection });
     });
-
 
     this.state = {
       weather: weather,
@@ -47,7 +44,6 @@ class UserAccount extends React.Component {
         </div>
       )
     })
-
 
     var scheduleCollection = this.state.scheduleCollection;
     var schedules = scheduleCollection.map((schedule) => {
@@ -95,8 +91,7 @@ class UserAccount extends React.Component {
                 <p>Relative Humidity <span>{this.state.weather.get('relative_humidity')}</span></p>
               </div>
             </section>
-          <div className="col-md-5 text-center">
-          </div>
+
         </div>
       </div>
       )
@@ -191,29 +186,21 @@ class UploadForm extends React.Component{
       return (
         <div key={image.cid}>
           <h3>{image.get('name')}</h3>
-          <a href={image.get('pic').url}><img src={image.get('pic').url} /></a>
+          <a href={image.get('pic').url}><img className="img-thumbnail" src={image.get('pic').url} /></a>
           <a onClick={(e) => {this.deleteSchedulePic(image)}} className="btn btn-info">Delete Image</a>
         </div>
       )
     });
     return (
       <div>
-        <div className = "col-md-">
         <form onSubmit={this.handleSubmit} >
           <h2> Schedule uploads </h2>
           <input onChange={this.handleNameChange} value={this.state.name} type="text" placeholder="Picture Name"/>
           <input onChange={this.handlePicChange} type="file"/>
-
-          { this.state.preview ? (
-            <img src={this.state.preview} />
-          ) : (
-            <span></span>
-          )}
           <img src={this.state.preview} />
           <input className="btn btn-danger" type="submit" value="Upload"/>
           { images }
         </form>
-        </div>
       </div>
     )
   }
