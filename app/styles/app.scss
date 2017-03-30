@@ -15,6 +15,10 @@ img {
   max-width: 100%;
 }
 
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
 body {
   background: url('../images/soccerfield.jpg');
   // position: absolute;
@@ -26,12 +30,14 @@ body {
 .clipboard {
   width: 900px;
   position: relative;
-  left: 8vw;
   height: 90vh;
+  left: 150px;
 };
 
 .clipboardpositioning{
 position: relative;
+left: 150px;
+
 };
 
 
@@ -39,8 +45,8 @@ position: relative;
   text-align: center;
   position: relative;
   bottom: 85vh;
-  left: 20vw;
   padding-top: 100px;
+  left: 150px;
 }
 
 .logo{
@@ -71,23 +77,29 @@ position: relative;
   position: absolute;;
 }
 
-.splashimage{
-  padding-left: 150px;
+.splashimagesplash{
+    position: relative;
+    bottom: -6vh;
+    right: 275px;
+    padding-top: 4vh;
 }
 
-.juggler {
-padding-top: 50px;
-  left: -90px;
-};
+.splashimagejuggler {
+  position: relative;
+  left: 10vw;
+}
 
 .schedulelisting {
+  padding-top: 3px;
+  padding-bottom: 3px;
   list-style-type: square;
 }
-
 
 .login {
     position: relative;
     top: 15vh;
+    right: 5vw;
+    bottom: -2vh;
 }
 .logo {
   height: 100px;
@@ -98,24 +110,119 @@ h1 {
   font-weight: bold;
 }
 
-.form-group{
-padding: 5px;
+.form-group {
+  padding: 5px;
+  display: block;
+  width: 100%;
 }
 
 .datescheduleform {
   position: relative;
-  top: -25px;
-  left: 13vw;
+  left: 130px;
+
 }
 
 .timescheduleform {
   position: relative;
-  top: -4vh;
-  left: 13vw;
+  left: 130px;
 }
 
 .trainingdescriptionscheduleform {
   position: relative;
-  top: -4vh;
-  left: 13vw;
+  left: 130px;
+}
+
+.text_backsplash{
+  background-color: rgba(66, 64, 64, 0.76);
+}
+
+.text_backsplash > p {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.loginbutton {
+    position: relative;
+    z-index: 10;
+    left: 40vw;
+    top: 16vh;
+
+}
+
+.centering-title{
+  text-align: center;
+  font-size: 48px;
+  color: yellow;
+  font-weight: bold;
+}
+
+.centering-schedule-title{
+  text-align: left;
+  color: red;
+  font-weight: bold;
+}
+
+.userstories {
+    position: relative;
+    padding-top: 12vh;
+    bottom: -3vh;
+}
+
+.centering-weather-title{
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+.centering-weather-information{
+  text-align: center;
+  background-color: rgba(31, 154, 207, 0.46);
+}
+
+.backgroundusercolor {
+  background-color: rgba(66, 64, 64, 0.36);
+  color: white;
+}
+
+// .container-splash {
+//   display: -webkit-flex;
+//   display: flex;
+//   -webkit-flex-direction: column;
+//   flex-direction: row;
+//   -webkit-align-items: center;
+//   align-items: center;
+//   -webkit-justify-content: center;
+//   justify-content: center;
+//
+//   .col-text {
+//     text-align: center !important;
+//   }
+//
+//   h1 {
+//     text-align: center !important;
+//   }
+// }
+
+
+.weather-flex{
+  display: flex;
+
+  img{
+    height: 100px;
+  }
+}
+
+.schedule-flex {
+  display: flex;
+
+  h2 {
+    margin-top: auto;
+  }
+
+  a {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: 10px;
+  }
 }

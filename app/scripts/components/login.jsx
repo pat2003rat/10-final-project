@@ -59,10 +59,9 @@ class Login extends React.Component {
                 <input className="btn btn-warning" type="submit" value="Log Me In!"/>
               </form>
             </div>
-
             <div className="col-md-4 juggler">
-              <img className="splashimage" src="./images/splash1.gif"></img>
-            </div>
+            <img className="splashimagejuggler" src="./images/splash1.gif"></img>
+           </div>
             <SignUp />
           </div>
         </div>

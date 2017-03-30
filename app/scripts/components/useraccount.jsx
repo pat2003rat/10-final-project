@@ -15,10 +15,10 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    // weather.fetch().then(()=>{
-    //   console.log(this.state.weather);
-    //   this.setState({weather})
-    // })
+    weather.fetch().then(()=>{
+      console.log(this.state.weather);
+      this.setState({weather})
+    })
 
     var scheduleCollection = new ScheduleCollection();
     scheduleCollection.fetch().then(() => {
@@ -33,7 +33,6 @@ class UserAccount extends React.Component {
   }
 
   render(){
-
     var schedulePicCollection = new SchedulePicCollection();
     var schedulePics = schedulePicCollection.map( (schedulePic) => {
       return (
@@ -52,7 +51,7 @@ class UserAccount extends React.Component {
           <li key={schedule.cid}>
             <a href={"#scheduledetail/" + schedule.get('objectId') }>{ moment(schedule.get('date').iso ).format('dddd, LL h:mm a')}</a>
           </li>
-      )
+        )
     });
 
       return (
@@ -63,34 +62,43 @@ class UserAccount extends React.Component {
           <div id="pagewrap">
             <div className = "row">
             <header>
-      		    <h2>Welcome to your Training Schedule</h2>
+      		    <h2 className = "centering-title"> Welcome to your Training Schedule</h2>
       	    </header>
+
       	    <section id="content">
               <div className="col-xs-12 col-md-6">
-      		      <h2>Schedule</h2>
+                <div className="schedule-flex">
+                  <h2 className = "centering-schedule-title"> Schedules</h2> <a href="#scheduleform/"><button type="Add" className="btn btn-danger">Add Session</button></a>
+                </div>
+
                     <div className="wellSessions">
                       <ul className="schedulelisting">
                         { schedules }
                       </ul>
                     </div>
-                  <a href="#scheduleform/"><button type="Add" className="btn btn-danger">Add Session</button></a>
                     <div className="form-group">
                   <img src={this.state.preview} />
                     <UploadForm />
-
                     </div>
                   {/* // <button type="submit" className="btn btn-primary">Edit</button> */}
                     </div>
       	    </section>
             <div className="col-xs-12 col-md-6">
-
             <section id="middle">
-                <h1>Today's Weather</h1>
+                <h2 className = "centering-weather-title">Today's Weather</h2>
+                <div className = "centering-weather-information">
                 <span><a href={this.state.weather.get('ob_url')}>Forecast</a></span>
                 <br></br>
-                  <span><img src={this.state.weather.get('icon_url')}/></span>
+                <div className = "col-md-12">
+                  <div className = "col-xs-12 col-md-6">
+                <img src={this.state.weather.get('icon_url')}/>
+                </div>
+                <div className = "col-xs-12 col-md-6" >
                 <p>Temperature <span>{this.state.weather.get('temp_f')}</span></p>
                 <p>Relative Humidity <span>{this.state.weather.get('relative_humidity')}</span></p>
+                </div>
+                </div>
+                </div>
             </section>
           </div>
         </div>
@@ -195,14 +203,20 @@ class UploadForm extends React.Component{
     });
     return (
       <div>
+        <div className = "scheduleuploads" >
         <form onSubmit={this.handleSubmit} >
-          <h2> Schedule uploads </h2>
+         <div className = "col-xs-12 col-md-6" >
+
+          <h3> Schedule uploads </h3>
+
           <input onChange={this.handleNameChange} value={this.state.name} type="text" placeholder="Picture Name"/>
           <input onChange={this.handlePicChange} type="file"/>
           <img src={this.state.preview} />
           <input className="btn btn-danger" type="submit" value="Upload"/>
           { images }
+          </div>
         </form>
+        </div>
       </div>
     )
   }

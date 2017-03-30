@@ -75,23 +75,23 @@ class ScheduleForm extends React.Component {
                 <h1>Training Report</h1>
                 <br></br>
                 <div className="form-group">
-                  <div className = "col-xs-12 col-md-8" >
-                <label htmlFor="input" className="col-md-6 datescheduleform">Date</label>
-                <input onChange={this.handleDate} id="inputDate" placeholder="Date" type="date"/>
-              </div>
-              </div>
-            <div className="form-group">
-              <div className = "col-xs-12 col-md-8" >
-              <label htmlFor="inputTime" className="col-md-6 timescheduleform">Time</label>
-              <input onChange={this.handleTime} id="inputTime" placeholder="Time" type="time"/>
-            </div>
-          </div>
-            <div className="form-group">
-              <div className = "col-xs-12 col-md-8" >
-              <label htmlFor="textArea" className="col-md-6 trainingdescriptionscheduleform">Training Description</label>
-              <textarea onChange={this.handleDescription} rows="9" id="inputDescription" placeholder="Training breakdown here"></textarea>
-            </div>
-          </div>
+                  <div className = "col-xs-12" >
+                    <label htmlFor="input" className="col-md-6 datescheduleform">Date</label>
+                    <input onChange={this.handleDate} id="inputDate" placeholder="Date" type="date"/>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className = "col-xs-12" >
+                    <label htmlFor="inputTime" className="col-md-6 timescheduleform">Time</label>
+                    <input onChange={this.handleTime} id="inputTime" placeholder="Time" type="time"/>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className = "col-xs-12" >
+                    <label htmlFor="textArea" className="col-md-6 trainingdescriptionscheduleform">Training Description</label>
+                    <textarea onChange={this.handleDescription} rows="9"  id="inputDescription" placeholder="Training breakdown here"></textarea>
+                  </div>
+                </div>
 
             <div className="form-group">
               <div className="col-xs-12 col-md-6">
