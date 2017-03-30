@@ -43,15 +43,14 @@ class Header extends React.Component {
     var current = User.current();
     console.log('hey',current)
     return(
-      React.createElement("div", {className: "container"}, 
+      React.createElement("div", {className: "container-fluid"}, 
         React.createElement("div", {className: "row"}, 
-          React.createElement("div", {className: "well"}, 
+        
             React.createElement("img", {className: "logo", src: "./images/logo.png"}), 
               React.createElement("span", {className: "links", onClick: this.logout}, "Log Out"), 
               React.createElement("span", {className: "links"}, React.createElement("a", {href: "#scheduleform/"}, "Create A Schedule")), 
-              React.createElement("span", {className: "links"}, React.createElement("a", {href: "#userAccount/"}, user.get('username') + "'s", " Account"))
+              React.createElement("span", {className: "links"}, React.createElement("a", {href: "#userAccount/"}, " Home "))
           )
-        )
       )
     )
   }
@@ -109,7 +108,6 @@ class Login extends React.Component {
         ), 
 
         React.createElement("div", {className: "container"}, 
-          React.createElement("div", {className: "row"}, 
             React.createElement("div", {className: "col-md-12 login"}, 
             React.createElement("div", {className: "col-md-4"}, 
               React.createElement("h1", null, "Please Login"), 
@@ -118,19 +116,17 @@ class Login extends React.Component {
                   React.createElement("label", {htmlFor: "email-login"}, "Email address"), 
                   React.createElement("input", {onChange: this.handleUsername, value: this.state.username, className: "form-control", name: "email", id: "email-login", type: "email", placeholder: "Email"})
                 ), 
-                React.createElement("div", {className: "form-group"}, 
+                React.createElement("div", {className: "form-group moveup"}, 
                   React.createElement("label", {htmlFor: "password-login"}, "Password"), 
                   React.createElement("input", {onChange: this.handlePassword, value: this.state.password, className: "form-control", name: "password", id: "password-login", type: "password", placeholder: "Password"})
                 ), 
                 React.createElement("input", {className: "btn btn-warning", type: "submit", value: "Log Me In!"})
               )
             ), 
-
             React.createElement("div", {className: "col-md-4 juggler"}, 
-              React.createElement("img", {className: "splashimage", src: "./images/splash1.gif"})
-            ), 
+            React.createElement("img", {className: "splashimagejuggler", src: "./images/splash1.gif"})
+           ), 
             React.createElement(SignUp, null)
-          )
           )
         )
       )
@@ -181,7 +177,8 @@ class SignUp extends React.Component {
   render() {
     return (
       React.createElement("div", null, 
-        React.createElement("div", {className: "col-md-4"}, 
+            React.createElement("div", {className: "col-xs-12 col-md-4 moveup"}, 
+
           React.createElement("h1", null, "Sign Up!"), 
           React.createElement("form", {onSubmit: this.handleSignup, id: "signup"}, 
             React.createElement("div", {className: "form-group"}, 
@@ -192,7 +189,7 @@ class SignUp extends React.Component {
               React.createElement("label", {htmlFor: "email"}, "Password"), 
               React.createElement("input", {onChange: this.handlePassword, id: "signup-password", className: "form-control", type: "password", name: "password", placeholder: "Password", required: true})
             ), 
-            
+
             React.createElement("input", {className: "btn btn-danger", type: "submit", value: "Sign Me Up!"})
           )
          )
@@ -378,38 +375,43 @@ class ScheduleForm extends React.Component {
 
   render() {
       return (
-        React.createElement("div", {className: "container"}, 
+        React.createElement("div", {className: "container-fluid"}, 
           React.createElement(Header, null), 
           React.createElement("img", {className: "clipboard", src: "./images/clipboard.png", alt: ""}), 
-          React.createElement("div", {className: "clipboardpositioning"}, 
+          React.createElement("div", {className: "clipboardpositioning-fluid"}, 
+            React.createElement("div", {className: "row"}, 
 
-            React.createElement("div", {className: "col-md-5"}, 
+            React.createElement("div", {className: "col-xs-12 col-md-6"}, 
               React.createElement("form", {className: "form-vertical", onSubmit: this.handleScheduleForm}, 
                 React.createElement("h1", null, "Training Report"), 
                 React.createElement("br", null), 
                 React.createElement("div", {className: "form-group"}, 
-                React.createElement("label", {htmlFor: "input", className: "col-md-6"}, "Date"), 
-                React.createElement("input", {onChange: this.handleDate, id: "inputDate", placeholder: "Date", type: "date"})
-              ), 
-            React.createElement("div", {className: "form-group"}, 
-              React.createElement("label", {htmlFor: "inputTime", className: "col-md-6"}, "Time"), 
-              React.createElement("input", {onChange: this.handleTime, id: "inputTime", placeholder: "Time", type: "time"})
-            ), 
-            React.createElement("div", {className: "form-group"}, 
-              React.createElement("label", {htmlFor: "textArea", className: "col-md-6"}, "Training Description"), 
-              React.createElement("textarea", {onChange: this.handleDescription, rows: "3", id: "inputDescription", placeholder: "Training breakdown here"})
-            ), 
-            React.createElement("div", {className: "form-group"}, 
-              React.createElement("label", {className: "col-md-6"}, "Videos")
+                  React.createElement("div", {className: "col-xs-12"}, 
+                    React.createElement("label", {htmlFor: "input", className: "col-md-6 datescheduleform"}, "Date"), 
+                    React.createElement("input", {onChange: this.handleDate, id: "inputDate", placeholder: "Date", type: "date"})
+                  )
+                ), 
+                React.createElement("div", {className: "form-group"}, 
+                  React.createElement("div", {className: "col-xs-12"}, 
+                    React.createElement("label", {htmlFor: "inputTime", className: "col-md-6 timescheduleform"}, "Time"), 
+                    React.createElement("input", {onChange: this.handleTime, id: "inputTime", placeholder: "Time", type: "time"})
+                  )
+                ), 
+                React.createElement("div", {className: "form-group"}, 
+                  React.createElement("div", {className: "col-xs-12"}, 
+                    React.createElement("label", {htmlFor: "textArea", className: "col-md-6 trainingdescriptionscheduleform"}, "Training Description"), 
+                    React.createElement("textarea", {onChange: this.handleDescription, rows: "9", id: "inputDescription", placeholder: "Training breakdown here"})
+                  )
+                ), 
 
-            ), 
             React.createElement("div", {className: "form-group"}, 
-              React.createElement("div", {className: "col-md-6"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                 React.createElement("button", {type: "submit", className: "btn btn-danger"}, " Submit "), 
                 React.createElement("button", {type: "cancel", className: "btn btn-primary"}, " Cancel Create Session ")
               )
             )
               )
+            )
         )
       )
     )
@@ -430,52 +432,58 @@ var Backbone = require('backbone');
 class Splash extends React.Component {
   render (){
     return (
-      React.createElement("div", {id: "container"}, 
-        React.createElement("div", {className: "userimages"}, 
-        React.createElement("div", {className: "col-md-4 "}
+      React.createElement("div", {id: "container container-splash"}, 
+        React.createElement("div", {className: "col-xs-12 col-md-4 "}
         ), 
-        React.createElement("div", {className: "col-md-4 "}, 
-        React.createElement("span", null, React.createElement("h1", null, "Be your own", React.createElement("img", {className: "logo", src: "./images/logo.png"})))
+        React.createElement("div", {className: "col-xs-12 col-md-4 col-text"}, 
+          React.createElement("span", null, 
+            React.createElement("h1", null, "Training Dean"
+
+              /* <img className="logo" src="./images/logo.png"></img> */
+            )
+            )
         ), 
 
-        React.createElement("div", {className: "col-md-4 "}
+        React.createElement("div", {className: "col-xs-12 col-md-4  "}
         ), 
 
         React.createElement("div", {className: "imgContainer"}, 
-          React.createElement("img", {className: "splashimage", src: "./images/splash2.gif"})
+          React.createElement("img", {className: "splashimagesplash", src: "./images/splash2.gif"})
         ), 
 
         React.createElement("div", {className: "container"}, 
-          React.createElement("div", {className: "row"}, 
-            React.createElement("a", {href: "#login/"}, " ", React.createElement("button", {className: "btn btn-danger"}, " Login "), " "), 
-
-          React.createElement("div", {className: "col-md-4 "}, 
+          React.createElement("a", {href: "#login/"}, " ", React.createElement("button", {className: "btn btn-danger loginbutton"}, " Login "), " "), 
+          React.createElement("div", {className: "row userstories"}, 
+          React.createElement("div", {className: "col-xs-12 col-md-4 "}, 
               React.createElement("div", {className: "backgroundusercolor"}, 
             React.createElement("h2", null, "Arsène Wenger"), React.createElement("img", {src: "./images/arsene.jpg"}), 
+            React.createElement("div", {className: "text_backsplash"}, 
             React.createElement("p", null, "It's silly to work hard the whole week and then spoil it by not preparing properly before the game.")
             )
-          ), 
+          )
+        ), 
 
-          React.createElement("div", {className: "col-md-4 "}, 
-                React.createElement("div", {className: "backgroundusercolor"}, 
+
+
+          React.createElement("div", {className: "col-xs-12 col-md-4 "}, 
+              React.createElement("div", {className: "backgroundusercolor"}, 
             React.createElement("h2", null, "Gian Piero Ventura"), React.createElement("img", {src: "./images/italian.jpg"}), 
+              React.createElement("div", {className: "text_backsplash"}, 
             React.createElement("p", null, "Whenever I need to breezily inflict a tough training session on my athletes, I know I can trust Training Dean's patented technology with API infused brilliance. 100% user friendly, 110% understanding.")
             )
+          )
           ), 
-
-          React.createElement("div", {className: "col-md-4"}, 
+          React.createElement("div", {className: "col-xs-12 col-md-4"}, 
                 React.createElement("div", {className: "backgroundusercolor"}, 
             React.createElement("h2", null, "Diego Maradona"), React.createElement("img", {src: "./images/Maradona.jpg"}), 
+              React.createElement("div", {className: "text_backsplash"}, 
             React.createElement("p", null, "Training Dean is the reason why people succeed. It is because of hard work. Luck has nothing to do with success.")
           )
+        )
           )
-
           )
         )
-
       )
-      )
-
     )
   };
 }
@@ -507,14 +515,11 @@ class UserAccount extends React.Component {
       console.log(this.state.weather);
       this.setState({weather})
     })
-    // var schedulePicCollection = new SchedulePicCollection();
-
 
     var scheduleCollection = new ScheduleCollection();
     scheduleCollection.fetch().then(() => {
       this.setState({ scheduleCollection });
     });
-
 
     this.state = {
       weather: weather,
@@ -524,7 +529,6 @@ class UserAccount extends React.Component {
   }
 
   render(){
-
     var schedulePicCollection = new SchedulePicCollection();
     var schedulePics = schedulePicCollection.map( (schedulePic) => {
       return (
@@ -536,7 +540,6 @@ class UserAccount extends React.Component {
       )
     })
 
-
     var scheduleCollection = this.state.scheduleCollection;
     var schedules = scheduleCollection.map((schedule) => {
 
@@ -544,7 +547,7 @@ class UserAccount extends React.Component {
           React.createElement("li", {key: schedule.cid}, 
             React.createElement("a", {href: "#scheduledetail/" + schedule.get('objectId')},  moment(schedule.get('date').iso ).format('dddd, LL h:mm a'))
           )
-      )
+        )
     });
 
       return (
@@ -553,38 +556,48 @@ class UserAccount extends React.Component {
           React.createElement("div", {className: "title text-center"}
           ), 
           React.createElement("div", {id: "pagewrap"}, 
+            React.createElement("div", {className: "row"}, 
             React.createElement("header", null, 
-      		    React.createElement("h2", null, "Welcome to your Training Schedule")
+      		    React.createElement("h2", {className: "centering-title"}, " Welcome to your Training Schedule")
       	    ), 
+
       	    React.createElement("section", {id: "content"}, 
-              React.createElement("div", {className: "col-md-6"}, 
-      		      React.createElement("h2", null, "Schedule"), 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("div", {className: "schedule-flex"}, 
+                  React.createElement("h2", {className: "centering-schedule-title"}, " Schedules"), " ", React.createElement("a", {href: "#scheduleform/"}, React.createElement("button", {type: "Add", className: "btn btn-danger"}, "Add Session"))
+                ), 
+
                     React.createElement("div", {className: "wellSessions"}, 
                       React.createElement("ul", {className: "schedulelisting"}, 
                          schedules 
                       )
                     ), 
-                  React.createElement("a", {href: "#scheduleform/"}, React.createElement("button", {type: "Add", className: "btn btn-danger"}, "Add Session")), 
                     React.createElement("div", {className: "form-group"}, 
                   React.createElement("img", {src: this.state.preview}), 
                     React.createElement(UploadForm, null)
-
                     )
                   /* // <button type="submit" className="btn btn-primary">Edit</button> */
                     )
       	    ), 
+            React.createElement("div", {className: "col-xs-12 col-md-6"}, 
             React.createElement("section", {id: "middle"}, 
-              React.createElement("div", {className: "col-md-6 text-center"}, 
-                React.createElement("h1", null, "Today's Weather"), 
+                React.createElement("h2", {className: "centering-weather-title"}, "Today's Weather"), 
+                React.createElement("div", {className: "centering-weather-information"}, 
                 React.createElement("span", null, React.createElement("a", {href: this.state.weather.get('ob_url')}, "Forecast")), 
                 React.createElement("br", null), 
-                  React.createElement("span", null, React.createElement("img", {src: this.state.weather.get('icon_url')})), 
+                React.createElement("div", {className: "col-md-12"}, 
+                  React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("img", {src: this.state.weather.get('icon_url')})
+                ), 
+                React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                 React.createElement("p", null, "Temperature ", React.createElement("span", null, this.state.weather.get('temp_f'))), 
                 React.createElement("p", null, "Relative Humidity ", React.createElement("span", null, this.state.weather.get('relative_humidity')))
-              )
-            ), 
-          React.createElement("div", {className: "col-md-5 text-center"}
+                )
+                )
+                )
+            )
           )
+        )
         )
       )
       )
@@ -679,27 +692,25 @@ class UploadForm extends React.Component{
       return (
         React.createElement("div", {key: image.cid}, 
           React.createElement("h3", null, image.get('name')), 
-          React.createElement("a", {href: image.get('pic').url}, React.createElement("img", {src: image.get('pic').url})), 
+          React.createElement("a", {href: image.get('pic').url}, React.createElement("img", {className: "img-thumbnail", src: image.get('pic').url})), 
           React.createElement("a", {onClick: (e) => {this.deleteSchedulePic(image)}, className: "btn btn-info"}, "Delete Image")
         )
       )
     });
     return (
       React.createElement("div", null, 
-        React.createElement("div", {className: "col-md-"}, 
+        React.createElement("div", {className: "scheduleuploads"}, 
         React.createElement("form", {onSubmit: this.handleSubmit}, 
-          React.createElement("h2", null, " Schedule uploads "), 
+         React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+
+          React.createElement("h3", null, " Schedule uploads "), 
+
           React.createElement("input", {onChange: this.handleNameChange, value: this.state.name, type: "text", placeholder: "Picture Name"}), 
           React.createElement("input", {onChange: this.handlePicChange, type: "file"}), 
-
-           this.state.preview ? (
-            React.createElement("img", {src: this.state.preview})
-          ) : (
-            React.createElement("span", null)
-          ), 
           React.createElement("img", {src: this.state.preview}), 
           React.createElement("input", {className: "btn btn-danger", type: "submit", value: "Upload"}), 
            images 
+          )
         )
         )
       )
