@@ -5805,7 +5805,7 @@ body {
   padding-top: 200px; }
 
 .wellSessions {
-  background-color: #15DB95; }
+  background-color: #e6f4f2; }
 
 .header-top {
   max-width: 100%; }
@@ -5830,7 +5830,8 @@ body {
 .schedulelisting {
   padding-top: 3px;
   padding-bottom: 3px;
-  list-style-type: square; }
+  list-style-type: square;
+  color: #004B8D; }
 
 .login {
   position: relative;

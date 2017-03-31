@@ -704,7 +704,7 @@ class UploadForm extends React.Component{
         React.createElement("form", {onSubmit: this.handleSubmit}, 
          React.createElement("div", {className: "col-xs-12 col-md-6"}, 
 
-          React.createElement("h3", {className: "scheduleuploadscolor"}, " Schedule uploads "), 
+          React.createElement("h2", {className: "scheduleuploadscolor"}, " Schedule Uploads "), 
 
           React.createElement("input", {onChange: this.handleNameChange, value: this.state.name, type: "text", placeholder: "Picture Name"}), 
           React.createElement("input", {onChange: this.handlePicChange, type: "file"}), 
