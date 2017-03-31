@@ -60,12 +60,23 @@ left: 150px;
 }
 .wellsessionform {
   height: 20px;
-  background-color: #32CD32;
   position: relative;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 200px;
 };
 
 .wellSessions{
   background-color: #15DB95;
+}
+
+.header-top {
+  background-color: rgba(47, 49, 79, 0.62);
+  max-width: 100%
+}
+
+.header-top >span {
+  color: white;
 }
 
 .well {
@@ -147,14 +158,15 @@ h1 {
     z-index: 10;
     left: 40vw;
     top: 16vh;
-
 }
+
 
 .centering-title{
   text-align: center;
   font-size: 48px;
-  color: yellow;
-  font-weight: bold;
+  color: black;
+  font-weight: bolder;
+  padding-bottom: 50px;
 }
 
 .centering-schedule-title{
@@ -177,7 +189,8 @@ h1 {
 
 .centering-weather-information{
   text-align: center;
-  background-color: rgba(31, 154, 207, 0.46);
+  background-color: rgba(31, 154, 207, 0.96);
+  color: red;
 }
 
 .backgroundusercolor {
@@ -204,13 +217,15 @@ h1 {
 //   }
 // }
 
+.weather-details{
+  padding-top: 35px;
+font-size: 20px;
+background-color: rgba(58, 240, 169, 0.15);
+font-weight: bolder;
+}
 
-.weather-flex{
-  display: flex;
-
-  img{
-    height: 100px;
-  }
+.weatherimage{
+  height: 150px;
 }
 
 .schedule-flex {

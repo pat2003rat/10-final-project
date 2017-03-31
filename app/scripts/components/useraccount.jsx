@@ -15,10 +15,10 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    weather.fetch().then(()=>{
-      console.log(this.state.weather);
-      this.setState({weather})
-    })
+    // weather.fetch().then(()=>{
+    //   console.log(this.state.weather);
+    //   this.setState({weather})
+    // })
 
     var scheduleCollection = new ScheduleCollection();
     scheduleCollection.fetch().then(() => {
@@ -87,13 +87,13 @@ class UserAccount extends React.Component {
             <section id="middle">
                 <h2 className = "centering-weather-title">Today's Weather</h2>
                 <div className = "centering-weather-information">
-                <span><a href={this.state.weather.get('ob_url')}>Forecast</a></span>
+                <span className = "currentweatherforecast"><a href={this.state.weather.get('ob_url')}> Current Weather Forecast</a></span>
                 <br></br>
                 <div className = "col-md-12">
-                  <div className = "col-xs-12 col-md-6">
-                <img src={this.state.weather.get('icon_url')}/>
+                  <div className = "col-xs-12 col-md-6 weather-url">
+                <img className ="weatherimage" src={this.state.weather.get('icon_url')}/>
                 </div>
-                <div className = "col-xs-12 col-md-6" >
+                <div className = "col-xs-12 col-md-6 weather-details" >
                 <p>Temperature <span>{this.state.weather.get('temp_f')}</span></p>
                 <p>Relative Humidity <span>{this.state.weather.get('relative_humidity')}</span></p>
                 </div>

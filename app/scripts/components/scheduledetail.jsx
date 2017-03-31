@@ -73,15 +73,16 @@ class ScheduleDetail extends React.Component {
       <div>
         <Header />
         <div className = "col-md-12">
+          <div classsName = "centering-schedule-description-edit" >
           { this.state.isEditing ? (
-            <div className = "col-md-4 wellsessionform">
+            <div className = "cold-xs-12 col-md-12 wellsessionform">
               <input type="date" value={this.state.model ? moment( this.state.model.get('date').iso ).format('yyyy-MM-dd, h:mm a') : ""} onChange={this.setDate}></input>
               <input type="text" value={this.state.model ? this.state.model.get('description') : ""} onChange={this.setDescription}></input>
               <a onClick={(e) => {this.editScheduleModel(e)}} className="btn btn-info">Save Edit</a>
               <a onClick={this.editMode} className="btn btn-danger">Cancel Edit</a>
             </div>
           ) : (
-            <div className = "col-md-4 wellsessionform">
+            <div className = "cold-xs-12 col-md-12 wellsessionform">
               <p>{this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm a') : ""}</p>
               <p>{this.state.model ? this.state.model.get('description') : ""}</p>
               <a onClick={(e) => {this.deleteScheduleModel(e)}} className="btn btn-danger">Delete Schedule</a>
@@ -90,6 +91,7 @@ class ScheduleDetail extends React.Component {
 
             </div>
           )}
+          </div>
         </div>
       </div>
     )
