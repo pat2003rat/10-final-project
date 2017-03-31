@@ -45,12 +45,12 @@ class Header extends React.Component {
     return(
       React.createElement("div", {className: "container-fluid"}, 
         React.createElement("div", {className: "row"}, 
-        
-            React.createElement("img", {className: "logo", src: "./images/logo.png"}), 
+          React.createElement("div", {className: "well header-top"}, 
               React.createElement("span", {className: "links", onClick: this.logout}, "Log Out"), 
               React.createElement("span", {className: "links"}, React.createElement("a", {href: "#scheduleform/"}, "Create A Schedule")), 
               React.createElement("span", {className: "links"}, React.createElement("a", {href: "#userAccount/"}, " Home "))
           )
+        )
       )
     )
   }
@@ -280,15 +280,16 @@ class ScheduleDetail extends React.Component {
       React.createElement("div", null, 
         React.createElement(Header, null), 
         React.createElement("div", {className: "col-md-12"}, 
+          React.createElement("div", {classsName: "centering-schedule-description-edit"}, 
            this.state.isEditing ? (
-            React.createElement("div", {className: "col-md-4 wellsessionform"}, 
+            React.createElement("div", {className: "cold-xs-12 col-md-12 wellsessionform"}, 
               React.createElement("input", {type: "date", value: this.state.model ? moment( this.state.model.get('date').iso ).format('yyyy-MM-dd, h:mm a') : "", onChange: this.setDate}), 
               React.createElement("input", {type: "text", value: this.state.model ? this.state.model.get('description') : "", onChange: this.setDescription}), 
               React.createElement("a", {onClick: (e) => {this.editScheduleModel(e)}, className: "btn btn-info"}, "Save Edit"), 
               React.createElement("a", {onClick: this.editMode, className: "btn btn-danger"}, "Cancel Edit")
             )
           ) : (
-            React.createElement("div", {className: "col-md-4 wellsessionform"}, 
+            React.createElement("div", {className: "cold-xs-12 col-md-12 wellsessionform"}, 
               React.createElement("p", null, this.state.model ? moment( this.state.model.get('date').iso ).format('dddd, LL, h:mm a') : ""), 
               React.createElement("p", null, this.state.model ? this.state.model.get('description') : ""), 
               React.createElement("a", {onClick: (e) => {this.deleteScheduleModel(e)}, className: "btn btn-danger"}, "Delete Schedule"), 
@@ -296,6 +297,7 @@ class ScheduleDetail extends React.Component {
               React.createElement("a", {href: "#userAccount/"}, React.createElement("button", {type: "Cancel", className: "btn btn-primary"}, "Cancel"))
 
             )
+          )
           )
         )
       )
@@ -511,10 +513,10 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    weather.fetch().then(()=>{
-      console.log(this.state.weather);
-      this.setState({weather})
-    })
+    // weather.fetch().then(()=>{
+    //   console.log(this.state.weather);
+    //   this.setState({weather})
+    // })
 
     var scheduleCollection = new ScheduleCollection();
     scheduleCollection.fetch().then(() => {
@@ -583,13 +585,13 @@ class UserAccount extends React.Component {
             React.createElement("section", {id: "middle"}, 
                 React.createElement("h2", {className: "centering-weather-title"}, "Today's Weather"), 
                 React.createElement("div", {className: "centering-weather-information"}, 
-                React.createElement("span", null, React.createElement("a", {href: this.state.weather.get('ob_url')}, "Forecast")), 
+                React.createElement("span", {className: "currentweatherforecast"}, React.createElement("a", {href: this.state.weather.get('ob_url')}, " Current Weather Forecast")), 
                 React.createElement("br", null), 
                 React.createElement("div", {className: "col-md-12"}, 
-                  React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("img", {src: this.state.weather.get('icon_url')})
+                  React.createElement("div", {className: "col-xs-12 col-md-6 weather-url"}, 
+                React.createElement("img", {className: "weatherimage", src: this.state.weather.get('icon_url')})
                 ), 
-                React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("div", {className: "col-xs-12 col-md-6 weather-details"}, 
                 React.createElement("p", null, "Temperature ", React.createElement("span", null, this.state.weather.get('temp_f'))), 
                 React.createElement("p", null, "Relative Humidity ", React.createElement("span", null, this.state.weather.get('relative_humidity')))
                 )
@@ -879,7 +881,7 @@ var Backbone = require('backbone');
 
 var Wunderground = Backbone.Model.extend({
   urlRoot: function(){
-    return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
+    // return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
 
   },
   sync: function(method, model, options){

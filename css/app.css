@@ -5799,11 +5799,20 @@ body {
 
 .wellsessionform {
   height: 20px;
-  background-color: #32CD32;
-  position: relative; }
+  position: relative;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 200px; }
 
 .wellSessions {
   background-color: #15DB95; }
+
+.header-top {
+  background-color: rgba(47, 49, 79, 0.62);
+  max-width: 100%; }
+
+.header-top > span {
+  color: white; }
 
 .well {
   height: 25px;
@@ -5874,8 +5883,9 @@ h1 {
 .centering-title {
   text-align: center;
   font-size: 48px;
-  color: yellow;
-  font-weight: bold; }
+  color: black;
+  font-weight: bolder;
+  padding-bottom: 50px; }
 
 .centering-schedule-title {
   text-align: left;
@@ -5894,18 +5904,21 @@ h1 {
 
 .centering-weather-information {
   text-align: center;
-  background-color: rgba(31, 154, 207, 0.46); }
+  background-color: rgba(31, 154, 207, 0.96);
+  color: red; }
 
 .backgroundusercolor {
   background-color: rgba(66, 64, 64, 0.36);
   color: white; }
 
-.weather-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-  .weather-flex img {
-    height: 100px; }
+.weather-details {
+  padding-top: 35px;
+  font-size: 20px;
+  background-color: rgba(58, 240, 169, 0.15);
+  font-weight: bolder; }
+
+.weatherimage {
+  height: 150px; }
 
 .schedule-flex {
   display: -webkit-box;
