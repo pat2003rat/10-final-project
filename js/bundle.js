@@ -102,7 +102,7 @@ class Login extends React.Component {
         React.createElement("div", {className: "container"}, 
           React.createElement("div", {className: "row"}, 
             React.createElement("div", {className: "col-md-12 text-center"}, 
-              React.createElement("h1", null, "Training Dean")
+              React.createElement("h1", {className: "centering-title-splash"}, "Training Dean")
             )
           )
         ), 
@@ -439,10 +439,9 @@ class Splash extends React.Component {
         ), 
         React.createElement("div", {className: "col-xs-12 col-md-4 col-text"}, 
           React.createElement("span", null, 
-            React.createElement("h1", null, "Training Dean"
+            React.createElement("h1", {className: "centering-title-splash"}, "Training Dean ")
 
               /* <img className="logo" src="./images/logo.png"></img> */
-            )
             )
         ), 
 
@@ -705,7 +704,7 @@ class UploadForm extends React.Component{
         React.createElement("form", {onSubmit: this.handleSubmit}, 
          React.createElement("div", {className: "col-xs-12 col-md-6"}, 
 
-          React.createElement("h3", null, " Schedule uploads "), 
+          React.createElement("h3", {className: "scheduleuploadscolor"}, " Schedule uploads "), 
 
           React.createElement("input", {onChange: this.handleNameChange, value: this.state.name, type: "text", placeholder: "Picture Name"}), 
           React.createElement("input", {onChange: this.handlePicChange, type: "file"}), 
@@ -881,7 +880,7 @@ var Backbone = require('backbone');
 
 var Wunderground = Backbone.Model.extend({
   urlRoot: function(){
-    // return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
+    return 'https://api.wunderground.com/api/1a11b11566a747ab/conditions/q/SC/Inman.json';
 
   },
   sync: function(method, model, options){

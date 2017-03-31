@@ -5780,7 +5780,7 @@ body {
 
 .clipboardpositioning {
   position: relative;
-  left: 150px; }
+  left: 50px; }
 
 .form-vertical {
   text-align: center;
@@ -5808,11 +5808,7 @@ body {
   background-color: #15DB95; }
 
 .header-top {
-  background-color: rgba(47, 49, 79, 0.62);
   max-width: 100%; }
-
-.header-top > span {
-  color: white; }
 
 .well {
   height: 25px;
@@ -5824,12 +5820,12 @@ body {
 .splashimagesplash {
   position: relative;
   bottom: -6vh;
-  right: 275px;
+  left: -550px;
   padding-top: 4vh; }
 
 .splashimagejuggler {
   position: relative;
-  left: 10vw; }
+  left: 4vw; }
 
 .schedulelisting {
   padding-top: 3px;
@@ -5839,7 +5835,7 @@ body {
 .login {
   position: relative;
   top: 15vh;
-  right: 5vw;
+  right: 2vw;
   bottom: -2vh; }
 
 .logo {
@@ -5874,16 +5870,16 @@ h1 {
   font-size: 15px;
   font-weight: bold; }
 
-.loginbutton {
-  position: relative;
-  z-index: 10;
-  left: 40vw;
-  top: 16vh; }
+.centering-title-splash {
+  text-align: center;
+  font-size: 95px;
+  color: #004B8D;
+  padding-bottom: 50px; }
 
 .centering-title {
   text-align: center;
   font-size: 48px;
-  color: black;
+  color: #004B8D;
   font-weight: bolder;
   padding-bottom: 50px; }
 
@@ -5904,11 +5900,11 @@ h1 {
 
 .centering-weather-information {
   text-align: center;
-  background-color: rgba(31, 154, 207, 0.96);
+  background-color: white;
   color: red; }
 
 .backgroundusercolor {
-  background-color: rgba(66, 64, 64, 0.36);
+  background-color: rgba(44, 64, 150, 0.8);
   color: white; }
 
 .weather-details {
@@ -5930,5 +5926,9 @@ h1 {
     margin-left: auto;
     margin-top: auto;
     margin-bottom: 10px; }
+
+.scheduleuploadscolor {
+  color: #db2424;
+  font-weight: bold; }
 
 /*# sourceMappingURL=app.css.map */
