@@ -5830,8 +5830,8 @@ body {
   left: 4vw; }
 
 .schedulelisting {
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 10px;
+  padding-bottom: 1px;
   list-style-type: square;
   color: #004B8D; }
 
@@ -5938,5 +5938,16 @@ h1 {
   position: relative;
   left: 23vw;
   padding-top: 3vh; }
+
+.logoimagesplash {
+  position: relative;
+  top: -4vh;
+  left: -6vw;
+  -webkit-transform: rotate(40deg);
+          transform: rotate(40deg);
+  height: 101px; }
+
+.schedulelisting li {
+  margin-bottom: 15px; }
 
 /*# sourceMappingURL=app.css.map */

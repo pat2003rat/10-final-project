@@ -441,7 +441,9 @@ class Splash extends React.Component {
         ), 
         React.createElement("div", {className: "col-xs-12 col-md-4 col-text"}, 
           React.createElement("span", null, 
-            React.createElement("h1", {className: "centering-title-splash"}, "Training Dean ")
+            React.createElement("h1", {className: "centering-title-splash"}, "Training Dean ", React.createElement("img", {className: "logoimagesplash", src: "./images/hatlogo.png"}), " ")
+
+
 
               /* <img className="logo" src="./images/logo.png"></img> */
             )
