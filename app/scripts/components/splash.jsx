@@ -10,7 +10,9 @@ class Splash extends React.Component {
         </div>
         <div className="col-xs-12 col-md-4 col-text">
           <span>
-            <h1 className = "centering-title-splash">Training Dean </h1>
+            <h1 className = "centering-title-splash">Training Dean <img className ="logoimagesplash" src="./images/hatlogo.png" ></img> </h1>
+
+
 
               {/* <img className="logo" src="./images/logo.png"></img> */}
             </span>
