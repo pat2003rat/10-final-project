@@ -408,8 +408,10 @@ class ScheduleForm extends React.Component {
 
             React.createElement("div", {className: "form-group"}, 
               React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("div", {className: "buttonsform"}, 
                 React.createElement("button", {type: "submit", className: "btn btn-danger"}, " Submit "), 
                 React.createElement("button", {type: "cancel", className: "btn btn-primary"}, " Cancel Create Session ")
+              )
               )
             )
               )
@@ -512,10 +514,10 @@ class UserAccount extends React.Component {
   constructor(props){
     super(props);
     var weather = new Wunderground;
-    // weather.fetch().then(()=>{
-    //   console.log(this.state.weather);
-    //   this.setState({weather})
-    // })
+    weather.fetch().then(()=>{
+      console.log(this.state.weather);
+      this.setState({weather})
+    })
 
     var scheduleCollection = new ScheduleCollection();
     scheduleCollection.fetch().then(() => {

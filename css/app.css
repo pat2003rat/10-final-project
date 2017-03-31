@@ -5770,7 +5770,9 @@ img {
   font-family: 'Open Sans', sans-serif; }
 
 body {
-  background: url("../images/soccerfield.jpg"); }
+  background: url("../images/soccerfield.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 .clipboard {
   width: 900px;
@@ -5931,5 +5933,10 @@ h1 {
 .scheduleuploadscolor {
   color: #db2424;
   font-weight: bold; }
+
+.buttonsform {
+  position: relative;
+  left: 23vw;
+  padding-top: 3vh; }
 
 /*# sourceMappingURL=app.css.map */
