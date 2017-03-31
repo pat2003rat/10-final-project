@@ -23,8 +23,8 @@ body {
   background: url('../images/soccerfield.jpg');
   // position: absolute;
   // z-index: -1;
-  // background-size: cover;
-  // background-repeat: no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
 };
 
 .clipboard {
@@ -242,4 +242,10 @@ font-weight: bolder;
 .scheduleuploadscolor{
   color: rgb(219, 36, 36);
   font-weight: bold;
+}
+
+.buttonsform {
+  position: relative;
+  left: 23vw;
+  padding-top: 3vh;
 }

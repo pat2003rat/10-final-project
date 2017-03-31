@@ -95,8 +95,10 @@ class ScheduleForm extends React.Component {
 
             <div className="form-group">
               <div className="col-xs-12 col-md-6">
+                <div className ="buttonsform">
                 <button type="submit" className="btn btn-danger"> Submit </button>
                 <button type="cancel" className="btn btn-primary"> Cancel Create Session </button>
+              </div>
               </div>
             </div>
               </form>
