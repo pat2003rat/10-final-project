@@ -207,7 +207,7 @@ class UploadForm extends React.Component{
         <form onSubmit={this.handleSubmit} >
          <div className = "col-xs-12 col-md-6" >
 
-          <h3> Schedule uploads </h3>
+          <h3 className = "scheduleuploadscolor"> Schedule uploads </h3>
 
           <input onChange={this.handleNameChange} value={this.state.name} type="text" placeholder="Picture Name"/>
           <input onChange={this.handlePicChange} type="file"/>

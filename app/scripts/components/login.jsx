@@ -38,7 +38,7 @@ class Login extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12 text-center">
-              <h1>Training Dean</h1>
+              <h1 className = "centering-title-splash">Training Dean</h1>
             </div>
           </div>
         </div>
